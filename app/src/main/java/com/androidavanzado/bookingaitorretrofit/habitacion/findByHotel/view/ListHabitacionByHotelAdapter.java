@@ -84,10 +84,10 @@ public class ListHabitacionByHotelAdapter extends RecyclerView.Adapter<ListHabit
             tvNumHabitacion = itemView.findViewById(R.id.tvNumeroHab);
         }
         public void bind(Habitacion habitacion, final OnCardClickListener onCardClickListener){
-            cardViewHabitacion.setOnClickListener(v -> onCardClickListener.onCardClick(habitacion.getIdHabitacion(), getAdapterPosition()));
+            cardViewHabitacion.setOnClickListener(v -> onCardClickListener.onCardClick(habitacion.getIdHabitacion()));
         }
     }
     public interface OnCardClickListener{
-        void onCardClick(int id, int position);
+        void onCardClick(int idHabitacion);
     }
 }

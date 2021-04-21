@@ -12,6 +12,7 @@ public class Constants {
     public static final String ACTION = "ACTION";
     public static final String QUERY = "QUERY";
     public static final String HOTEL = "HOTEL";
+    public static final String CIUDAD = "CIUDAD";
     public static final String HABITACION = "HABITACION";
     public static final String FIND_ALL = "FIND_ALL";
     public static final String FIND_BY_ID = "FIND_BY_ID";

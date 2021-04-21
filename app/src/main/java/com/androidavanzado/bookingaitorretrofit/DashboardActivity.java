@@ -17,19 +17,16 @@ public class DashboardActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
         Fragment f = null;
-        Hotel hotel = new Hotel();
 
         switch (item.getItemId()){
             case R.id.navigation_home:
+                f = AllHotelFragment.newInstance(1);
                 Log.d("navigation_home", "Inicio");
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_dashboard_fragment_container, AllHotelFragment.newInstance(1))
-                        .commit();
-                return true;
+                break;
                 // true porque empezamos desde esta página
             case R.id.navigation_cities:
                 Log.d("navigation_cities", "Ciudades");
+                f = AllHotelFragment.newInstance(1);
                 break;
             case R.id.navigation_more:
                 Log.d("navigation_more", "Más");
@@ -41,12 +38,10 @@ public class DashboardActivity extends AppCompatActivity {
 
         if (f != null){
             //if (f == HotelDataFragment.newInstance(hotel.getIdHotel()))
-
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.activity_dashboard_fragment_container, f)
                     .commit();
-
             return true;
         }
         return false;
@@ -59,6 +54,9 @@ public class DashboardActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar_dashboard);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Ocultamos el título de la App
+        getSupportActionBar().hide();
 
         // Seteamos el contenido de AllHotelFragment como view a cargar al crearse la vista de DashboardActivity
         getSupportFragmentManager()

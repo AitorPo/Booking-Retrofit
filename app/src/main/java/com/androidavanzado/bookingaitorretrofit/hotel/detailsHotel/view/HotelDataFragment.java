@@ -182,7 +182,6 @@ public class HotelDataFragment extends Fragment implements DetailsHotelContract.
             }
         });
         Toast.makeText(getActivity(), R.string.internet_error, Toast.LENGTH_LONG).show();
-
     }
 
     @Override

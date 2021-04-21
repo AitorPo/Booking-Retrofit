@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidavanzado.bookingaitorretrofit.R;
+import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.bumptech.glide.Glide;
 
@@ -49,7 +50,9 @@ public class ListHotelAdapter extends RecyclerView.Adapter<ListHotelAdapter.View
 
         Glide.with(context).load(BOOKING_API_PHOTO_HOTEL_URL + holder.hotel.getFoto() + IMG_FORMAT)
                 .clone()
+                .fitCenter()
                 .centerCrop()
+                .lock()
                 .into(holder.ivFoto);
     }
 

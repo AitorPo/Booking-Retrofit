@@ -23,6 +23,8 @@
             android:layout_height="wrap_content"
             android:text="Error al obtener los datos" />
 
+        <!-- CONTAINED BUTTON: opción más importante (recargar porque ha habido un fallo)
+        No hay que especificar estilo porque es el botón por defecto -->
         <Button
             android:id="@+id/btnRetry"
             android:layout_width="wrap_content"

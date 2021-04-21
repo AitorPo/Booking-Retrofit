@@ -1,5 +1,6 @@
 package com.androidavanzado.bookingaitorretrofit.service;
 
+import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 
@@ -25,4 +26,14 @@ public interface ApiService {
     @GET("/BookingAitor/Controller")
     Call<ArrayList<Habitacion>> getAllHabitaciones(
             @QueryMap Map<String, String> params);
+
+    @GET("/BookingAitor/Controller")
+    Call<Habitacion> getHabitacionById(
+            @QueryMap Map<String, String> params);
+
+    @GET("BookingAitor/Controller")
+    Call<Ciudad> getCiudadById (
+            @QueryMap Map<String, String> params);
+
+
 }

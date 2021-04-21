@@ -1,8 +1,10 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.presenter;
 
+import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.contract.ListHotelContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.model.ListHotelModel;
+import com.google.gson.internal.$Gson$Types;
 
 import java.util.ArrayList;
 

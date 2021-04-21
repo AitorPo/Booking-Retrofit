@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Hotel {
     
     private int idHotel, puntuacion, numHabitaciones, numReservas, ciudad;
-    private String nombre, foto, direccion, descripcion;
+    private String nombre, foto, direccion, descripcion, nombreCiudad;
     private boolean destacado;
 
     public Hotel(String nombre){
@@ -32,6 +32,18 @@ public class Hotel {
                 ", descripcion='" + descripcion + '\'' +
                 ", destacado=" + destacado +
                 '}';
+    }
+
+    public String getNombreCiudad() {
+        return nombreCiudad;
+    }
+
+    public void setNombreCiudad(String nombreCiudad) {
+        this.nombreCiudad = nombreCiudad;
+    }
+
+    public boolean isDestacado() {
+        return destacado;
     }
 
     public int getIdHotel() {

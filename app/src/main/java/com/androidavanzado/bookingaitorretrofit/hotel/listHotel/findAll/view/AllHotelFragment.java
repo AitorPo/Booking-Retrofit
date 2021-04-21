@@ -20,9 +20,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidavanzado.bookingaitorretrofit.R;
+import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view.HotelDataFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.contract.ListHotelContract;
@@ -50,6 +52,8 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
     private Button btnRetry;
     private ProgressBar pbProgress;
     private ConstraintLayout constraintLayout;
+    private TextView tvCiudad;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the

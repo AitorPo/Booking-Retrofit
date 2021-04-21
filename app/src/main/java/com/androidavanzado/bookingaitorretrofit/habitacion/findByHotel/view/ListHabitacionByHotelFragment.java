@@ -123,14 +123,12 @@ public class ListHabitacionByHotelFragment extends Fragment implements ListHabit
         constraintLayout.setVisibility(View.VISIBLE);
         pbProgress.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
-        adapter = new ListHabitacionByHotelAdapter(habitacionArrayList, getContext(), (id, position) -> {
-            Intent intent = new Intent(getContext(), DataHabitacionFragment.class);
-            int idHabitacion = habitacionArrayList.get(position).getIdHabitacion();
-            int idHotel = habitacionArrayList.get(position).getIdHotel();
-            intent.putExtra(HOTEL_ID, idHotel);
-            intent.putExtra(HABITACION_ID, idHabitacion);
-            startActivity(intent);
-        });
+        adapter = new ListHabitacionByHotelAdapter(habitacionArrayList, getContext(), idHabitacion -> getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_dashboard_fragment_container,
+                                DataHabitacionFragment.newInstance(idHabitacion))
+                                    .addToBackStack(null)
+                                    .commit());
 
         recyclerViewHabitacion.setAdapter(adapter);
     }
