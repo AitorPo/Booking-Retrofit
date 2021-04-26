@@ -2,14 +2,11 @@ package com.androidavanzado.bookingaitorretrofit;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 
-import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
-import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view.HotelDataFragment;
+import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.AllHotelFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -20,12 +17,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.navigation_home:
-                f = AllHotelFragment.newInstance(1);
+                f = ListCiudadFragment.newInstance(1);
                 Log.d("navigation_home", "Inicio");
                 break;
                 // true porque empezamos desde esta página
-            case R.id.navigation_cities:
-                Log.d("navigation_cities", "Ciudades");
+            case R.id.navigation_hotels:
+                Log.d("navigation_hotels", "Hoteles");
                 f = AllHotelFragment.newInstance(1);
                 break;
             case R.id.navigation_more:
@@ -61,7 +58,7 @@ public class DashboardActivity extends AppCompatActivity {
         // Seteamos el contenido de AllHotelFragment como view a cargar al crearse la vista de DashboardActivity
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.activity_dashboard_fragment_container, AllHotelFragment.newInstance(1))
+                .add(R.id.activity_dashboard_fragment_container, ListCiudadFragment.newInstance(1))
                 .commit();
     }
 }

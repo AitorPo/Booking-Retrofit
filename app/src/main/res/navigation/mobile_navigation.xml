@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_cities"
+        android:id="@+id/navigation_hotels"
         android:name="com.androidavanzado.bookingaitorretrofit.ui.dashboard.DashboardFragment"
         android:label="@string/title_cities"
         tools:layout="@layout/fragment_dashboard" />

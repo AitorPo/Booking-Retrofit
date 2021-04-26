@@ -2,6 +2,7 @@
     <string name="app_name">BookingAitorRetrofit</string>
     <string name="title_home">Inicio</string>
     <string name="title_cities">Ciudades</string>
+    <string name="title_hotels">Hoteles</string>
     <string name="title_profile">Mi perfil</string>
     <string name="title_more">Más</string>
     <string name="internet_error">Comprueba tu conexión a internet</string>

@@ -4,6 +4,7 @@ import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,14 @@ public interface ApiService {
 
     @GET("BookingAitor/Controller")
     Call<Ciudad> getCiudadById (
+            @QueryMap Map<String, String> params);
+
+    @GET("BookingAitor/Controller")
+    Call<ArrayList<Ciudad>> getAllCiudades (
+            @QueryMap Map<String, String> params);
+
+    @GET("BookingAitor/Controller")
+    Call<ArrayList<Hotel>> getHotelesByCiudad (
             @QueryMap Map<String, String> params);
 
 
