@@ -1,16 +1,12 @@
 package com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.model;
 
 import android.annotation.SuppressLint;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
-import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.contract.ListHabitacionByPrecioAscContract;
-import com.androidavanzado.bookingaitorretrofit.service.ApiCLient;
-import com.androidavanzado.bookingaitorretrofit.service.ApiService;
-
-import org.json.JSONArray;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,14 +1,11 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.model;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.contract.ListHotelByCiudadContract;
-import com.androidavanzado.bookingaitorretrofit.service.ApiCLient;
-import com.androidavanzado.bookingaitorretrofit.service.ApiService;
-
-import org.json.JSONArray;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,16 +1,39 @@
 package com.androidavanzado.bookingaitorretrofit.beans;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
+import com.google.gson.annotations.Expose;
+
+@Entity(tableName = "hotel")
 
 public class Hotel {
-    
-    private int idHotel, puntuacion, numHabitaciones, numReservas, ciudad;
-    private String nombre, foto, direccion, descripcion, nombreCiudad;
+
+    @PrimaryKey(autoGenerate = true)
+
+    private int idHotel;
+
+    private int puntuacion;
+
+    private int numHabitaciones;
+
+    private int numReservas;
+
+    private int idCiudad;
+
+    private String nombre;
+
+    private String foto;
+
+    private String direccion;
+
+    private String descripcion;
+
+
+    @Ignore
     private boolean destacado;
+
 
     public Hotel(String nombre){
         this.nombre = nombre;
@@ -28,19 +51,12 @@ public class Hotel {
                 ", nombre='" + nombre + '\'' +
                 ", foto='" + foto + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", ciudad='" + ciudad + '\'' +
+                ", ciudad='" + idCiudad + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", destacado=" + destacado +
                 '}';
     }
 
-    public String getNombreCiudad() {
-        return nombreCiudad;
-    }
-
-    public void setNombreCiudad(String nombreCiudad) {
-        this.nombreCiudad = nombreCiudad;
-    }
 
     public boolean isDestacado() {
         return destacado;
@@ -86,12 +102,12 @@ public class Hotel {
         this.direccion = direccion;
     }
 
-    public int getCiudad() {
-        return ciudad;
+    public int getIdCiudad() {
+        return idCiudad;
     }
 
-    public void setCiudad(int ciudad) {
-        this.ciudad = ciudad;
+    public void setIdCiudad(int idCiudad) {
+        this.idCiudad = idCiudad;
     }
 
     public String getDescripcion() {

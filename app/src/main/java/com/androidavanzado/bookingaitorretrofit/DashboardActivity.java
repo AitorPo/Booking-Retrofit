@@ -3,6 +3,7 @@ package com.androidavanzado.bookingaitorretrofit;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.androidavanzado.bookingaitorretrofit.app.MyApp;
 import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.HotelFilterFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.AllHotelFragment;
@@ -46,10 +47,12 @@ public class DashboardActivity extends AppCompatActivity {
         return false;
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar_dashboard);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

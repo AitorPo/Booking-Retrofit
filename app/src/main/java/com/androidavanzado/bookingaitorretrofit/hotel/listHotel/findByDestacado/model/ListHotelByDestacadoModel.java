@@ -1,17 +1,13 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.model;
 
 import android.annotation.SuppressLint;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.contract.ListHotelByDestacadoContract;
-import com.androidavanzado.bookingaitorretrofit.service.ApiCLient;
-import com.androidavanzado.bookingaitorretrofit.service.ApiService;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 
-import org.json.JSONArray;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 

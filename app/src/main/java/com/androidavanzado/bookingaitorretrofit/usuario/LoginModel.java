@@ -1,17 +1,11 @@
 package com.androidavanzado.bookingaitorretrofit.usuario;
 
-import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Usuario;
-import com.androidavanzado.bookingaitorretrofit.service.ApiCLient;
-import com.androidavanzado.bookingaitorretrofit.service.ApiService;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 
-import org.json.JSONArray;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 

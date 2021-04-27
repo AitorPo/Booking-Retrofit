@@ -4,15 +4,14 @@ import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.contract.DetailsHotelContract;
-import com.androidavanzado.bookingaitorretrofit.service.ApiCLient;
-import com.androidavanzado.bookingaitorretrofit.service.ApiService;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 /*import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.ListHotelActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.view.ListHotelByCiudadActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.view.ListHotelByDestacadoActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.view.ListHotelByPuntuacionActivity;
 import com.androidavanzado.bookingaitorretrofit.utils.Post;*/
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -52,5 +51,7 @@ public class DetailsHotelModel implements DetailsHotelContract.Model {
                 onDetailsHotelListener.onReject(t);
             }
         });
+
+
     }
 }

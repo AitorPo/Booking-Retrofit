@@ -5,11 +5,9 @@ import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.contract.ListHabitacionByHotelContract;
-import com.androidavanzado.bookingaitorretrofit.service.ApiCLient;
-import com.androidavanzado.bookingaitorretrofit.service.ApiService;
-import com.androidavanzado.bookingaitorretrofit.utils.Constants;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
+import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,11 +16,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ACTION;
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.FIND_ALL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.FIND_ALL_BY_HOTEL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.HABITACION;
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.HABITACION_ID;
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_HOTEL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.QUERY;
 /*import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.view.ListHotelByCiudadActivity;

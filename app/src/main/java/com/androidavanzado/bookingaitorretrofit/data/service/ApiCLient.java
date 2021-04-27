@@ -1,6 +1,4 @@
-package com.androidavanzado.bookingaitorretrofit.service;
-
-import com.androidavanzado.bookingaitorretrofit.utils.Constants;
+package com.androidavanzado.bookingaitorretrofit.data.service;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
