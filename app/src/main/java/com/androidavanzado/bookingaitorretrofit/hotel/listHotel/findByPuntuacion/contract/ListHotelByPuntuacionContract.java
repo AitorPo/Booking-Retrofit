@@ -8,7 +8,7 @@ public interface ListHotelByPuntuacionContract {
     interface Model {
         interface OnListHotelByPuntuacionListener {
             void onResolve(ArrayList<Hotel> hotelArrayList);
-            void onReject(String message);
+            void onReject(Throwable throwable);
         }
         void getListByPuntuacionLH(OnListHotelByPuntuacionListener onListHotelByPuntuacionListener);
     }
@@ -19,6 +19,6 @@ public interface ListHotelByPuntuacionContract {
 
     interface View{
         void onSuccess(ArrayList<Hotel> hotelArrayList);
-        void onFailure(String error);
+        void onFailure(Throwable throwable);
     }
 }

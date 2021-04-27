@@ -1,18 +1,13 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,16 +19,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidavanzado.bookingaitorretrofit.R;
-import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view.HotelDataFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.contract.ListHotelContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.presenter.ListHotelPresenter;
-import com.androidavanzado.bookingaitorretrofit.utils.OnDetailExternalListener;
 
 import java.util.ArrayList;
-
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_HOTEL;
 
 /**
  * A fragment representing a list of Items.

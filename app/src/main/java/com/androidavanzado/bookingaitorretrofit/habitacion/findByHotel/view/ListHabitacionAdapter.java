@@ -21,12 +21,12 @@ import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_A
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.COIN;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
-public class ListHabitacionByHotelAdapter extends RecyclerView.Adapter<ListHabitacionByHotelAdapter.ViewHolder> {
+public class ListHabitacionAdapter extends RecyclerView.Adapter<ListHabitacionAdapter.ViewHolder> {
     ArrayList<Habitacion> habitaciones;
     Context context;
     OnCardClickListener onCardClickListener;
 
-    public ListHabitacionByHotelAdapter(ArrayList<Habitacion> habitaciones, Context context, OnCardClickListener onCardClickListener){
+    public ListHabitacionAdapter(ArrayList<Habitacion> habitaciones, Context context, OnCardClickListener onCardClickListener){
         this.habitaciones = habitaciones;
         this.context = context;
         this.onCardClickListener = onCardClickListener;

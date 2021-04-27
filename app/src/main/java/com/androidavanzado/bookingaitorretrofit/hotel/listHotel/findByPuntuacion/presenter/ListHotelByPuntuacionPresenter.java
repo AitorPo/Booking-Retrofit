@@ -2,7 +2,7 @@ package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacio
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.contract.ListHotelByPuntuacionContract;
-import com.androidavanzado.bookingaitor.hotel.listHotel.findByPuntuacion.model.ListHotelByPuntuacionModel;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.model.ListHotelByPuntuacionModel;
 
 import java.util.ArrayList;
 
@@ -22,8 +22,8 @@ public class ListHotelByPuntuacionPresenter implements ListHotelByPuntuacionCont
                 view.onSuccess(hotelArrayList);
             }
             @Override
-            public void onReject(String message) {
-                view.onFailure("Error al traer los datos desde el Model");
+            public void onReject(Throwable throwable) {
+                view.onFailure(throwable);
             }
         });
     }

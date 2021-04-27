@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.HotelFilterFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.AllHotelFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,6 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
                 break;
             case R.id.navigation_more:
                 Log.d("navigation_more", "Más");
+                f = HotelFilterFragment.newInstance(1);
                 break;
             case R.id.navigation_profile:
                 Log.d("navigation_profile", "Mi perfil");

@@ -1,4 +1,4 @@
-package com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view;
+package com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,21 +20,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
-//import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.view.DataHabitacionFragment;
-import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.contract.ListHabitacionByHotelContract;
-import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.presenter.ListHabitacionByHotelPresenter;
-/*import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.view.ListHabitacionByPrecioAscActivity;
-import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioDesc.view.ListHabitacionByPrecioDescActivity;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.ListHotelActivity;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.view.ListHotelByDestacadoActivity;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.view.ListHotelByPuntuacionActivity;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByReservas.view.ListHotelByReservasActivity;*/
+import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view.ListHabitacionAdapter;
+import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.contract.ListHabitacionByPrecioAscContract;
+import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.presenter.ListHabitacionByPrecioAscPresenter;
+
 
 import java.util.ArrayList;
 
-public class ListHabitacionByHotelFragment extends Fragment implements ListHabitacionByHotelContract.View {
-    private static final String TAG = "ListHabitacionByHotelFragment";
+public class ListHabitacionByPrecioAscFragment extends Fragment implements ListHabitacionByPrecioAscContract.View {
+    private static final String TAG = "ListHabitacionByPrecioAscFragment";
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     private static final String ARG_ID_HOTEL = "ARG_ID_HOTEL";
@@ -42,7 +37,7 @@ public class ListHabitacionByHotelFragment extends Fragment implements ListHabit
     private int mColumnCount = 1;
     private int mIdHotel = 0;
     private RecyclerView recyclerViewHabitacion;
-    private ListHabitacionByHotelPresenter presenter;
+    private ListHabitacionByPrecioAscPresenter presenter;
     private ListHabitacionAdapter adapter;
     private ConstraintLayout constraintLayout;
     private ProgressBar pbProgress;
@@ -57,15 +52,15 @@ public class ListHabitacionByHotelFragment extends Fragment implements ListHabit
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ListHabitacionByHotelFragment() {
+    public ListHabitacionByPrecioAscFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ListHabitacionByHotelFragment newInstance(int idHotel) {
-        ListHabitacionByHotelFragment fragment = new ListHabitacionByHotelFragment();
+    public static ListHabitacionByPrecioAscFragment newInstance(int mColumnCount) {
+        ListHabitacionByPrecioAscFragment fragment = new ListHabitacionByPrecioAscFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_ID_HOTEL, idHotel);
+        args.putInt(ARG_COLUMN_COUNT, mColumnCount);
         fragment.setArguments(args);
         return fragment;
     }
@@ -73,7 +68,7 @@ public class ListHabitacionByHotelFragment extends Fragment implements ListHabit
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new ListHabitacionByHotelPresenter(this);
+        presenter = new ListHabitacionByPrecioAscPresenter(this);
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             idHotel = getArguments().getInt(ARG_ID_HOTEL);
@@ -100,7 +95,7 @@ public class ListHabitacionByHotelFragment extends Fragment implements ListHabit
 
         btnRetry = view.findViewById(R.id.btnRetry);
 
-        presenter.getHabitacionList(idHotel);
+        presenter.getHabitacionPrecioAsc();
 
         recyclerViewHabitacion = view.findViewById(R.id.recyclerViewHabitacion);
         recyclerViewHabitacion.setLayoutManager(new LinearLayoutManager(context));
@@ -120,11 +115,11 @@ public class ListHabitacionByHotelFragment extends Fragment implements ListHabit
         pbProgress.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
         adapter = new ListHabitacionAdapter(habitacionArrayList, getContext(), idHabitacion -> getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.activity_dashboard_fragment_container,
-                                DataHabitacionFragment.newInstance(idHabitacion))
-                                    .addToBackStack(null)
-                                    .commit());
+                .beginTransaction()
+                .replace(R.id.activity_dashboard_fragment_container,
+                        DataHabitacionFragment.newInstance(idHabitacion))
+                .addToBackStack(null)
+                .commit());
 
         recyclerViewHabitacion.setAdapter(adapter);
     }
@@ -144,7 +139,7 @@ public class ListHabitacionByHotelFragment extends Fragment implements ListHabit
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.getHabitacionList(idHotel);
+                presenter.getHabitacionPrecioAsc();
             }
         });
         Toast.makeText(getContext(), R.string.internet_error, Toast.LENGTH_LONG).show();

@@ -1,5 +1,6 @@
-package com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view;
+package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,49 +10,55 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.androidavanzado.bookingaitorretrofit.R;
-import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
-import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.contract.ListCiudadContract;
-import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.presenter.ListCiudadPresenter;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.view.ListHotelByCiudadFragment;
+import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
+import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view.HotelDataFragment;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.ListHotelAdapter;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.presenter.ListHotelByDestacadoPresenter;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.view.ListHotelByDestacadoFragment;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.contract.ListHotelByPuntuacionContract;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.presenter.ListHotelByPuntuacionPresenter;
 
 import java.util.ArrayList;
 
-public class ListCiudadFragment extends Fragment implements ListCiudadContract.View {
-
-
-    private final String TAG = "AllHotelFragment";
+public class ListHotelByPuntuacionFragment extends Fragment implements ListHotelByPuntuacionContract.View  {
+    private final String TAG = "ListHotelByPuntuacionFragment";
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private RecyclerView recyclerViewCiudad;
+    private RecyclerView recyclerView;
+    private ListHotelAdapter adapter;
+    private ListHotelByPuntuacionPresenter presenter;
     private LinearLayout linearLayout;
-    private ListCiudadAdapter adapter;
-    private ListCiudadPresenter presenter;
     private Button btnRetry;
     private ProgressBar pbProgress;
     private ConstraintLayout constraintLayout;
+    private TextView tvCiudad;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ListCiudadFragment() {
+    public ListHotelByPuntuacionFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ListCiudadFragment newInstance(int columnCount) {
-        ListCiudadFragment fragment = new ListCiudadFragment();
+    public static ListHotelByPuntuacionFragment newInstance(int columnCount) {
+        ListHotelByPuntuacionFragment fragment = new ListHotelByPuntuacionFragment();
         Bundle args = new Bundle();
 
         args.putInt(ARG_COLUMN_COUNT, columnCount);
@@ -60,24 +67,24 @@ public class ListCiudadFragment extends Fragment implements ListCiudadContract.V
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new ListCiudadPresenter(this);
+        presenter = new ListHotelByPuntuacionPresenter(this);
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-    }
 
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_list_ciudad, container, false);
+        View view = inflater.inflate(R.layout.activity_list_hotel, container, false);
 
         Context context = view.getContext();
 
-        constraintLayout = view.findViewById(R.id.constraint_all_ciudades);
+        constraintLayout = view.findViewById(R.id.constraint_all_hoteles);
         constraintLayout.setVisibility(View.GONE);
 
         pbProgress = view.findViewById(R.id.pbProgress);
@@ -87,30 +94,30 @@ public class ListCiudadFragment extends Fragment implements ListCiudadContract.V
         linearLayout.setVisibility(View.GONE);
 
         btnRetry = view.findViewById(R.id.btnRetry);
-        presenter.getCiudades();
+        presenter.getListPuntuacion();
 
-        recyclerViewCiudad = view.findViewById(R.id.recyclerViewHabitacion);
-        recyclerViewCiudad.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         return view;
     }
 
     @Override
-    public void onSuccess(ArrayList<Ciudad> ciudadArrayList) {
+    public void onSuccess(ArrayList<Hotel> hoteles) {
         constraintLayout.setVisibility(View.VISIBLE);
         pbProgress.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
-        adapter = new ListCiudadAdapter(ciudadArrayList, getContext(), idCiudad -> {
-            getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.activity_dashboard_fragment_container,
-                            ListHotelByCiudadFragment.newInstance(idCiudad))
-                            .addToBackStack(null)
-                            .commit();
-        });
-        recyclerViewCiudad.setAdapter(adapter);
+        adapter = new ListHotelAdapter(hoteles, getContext(), idHotel -> getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_dashboard_fragment_container,
+                        HotelDataFragment.newInstance(idHotel))
+                // Para que recuerde el contenido anterior del fragment
+                .addToBackStack(null)
+                .commit());
+        recyclerView.setAdapter(adapter);
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onFailure(Throwable throwable) {
         Log.e(TAG, throwable.toString());
@@ -126,7 +133,7 @@ public class ListCiudadFragment extends Fragment implements ListCiudadContract.V
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.getCiudades();
+                presenter.getListPuntuacion();
             }
         });
         Toast.makeText(getContext(), R.string.internet_error, Toast.LENGTH_LONG).show();

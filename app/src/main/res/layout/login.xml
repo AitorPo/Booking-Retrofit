@@ -18,39 +18,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email..."
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivUsuario" />
 
-    <EditText
-        android:id="@+id/tvPassword"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutUser"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        app:endIconMode="clear_text"
+        android:hint="Email..."
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivUsuario">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="Contraseña..."
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/tvEmail"
-        app:layout_constraintStart_toStartOf="@+id/tvEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutUser"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutUser"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutUser">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:onClick="btnClickLog"
         android:text="Login"
-        app:layout_constraintEnd_toEndOf="@+id/tvPassword"
-        app:layout_constraintStart_toStartOf="@+id/tvPassword"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassword"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
