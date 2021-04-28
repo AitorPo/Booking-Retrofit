@@ -11,7 +11,7 @@ public class ListCiudadPresenter implements ListCiudadContract.Presenter {
     private ListCiudadModel model;
     private ListCiudadContract.View view;
 
-    public ListCiudadPresenter(ListCiudadContract.View view){
+    public ListCiudadPresenter(ListCiudadContract.View view) {
         model = new ListCiudadModel();
         this.view = view;
     }

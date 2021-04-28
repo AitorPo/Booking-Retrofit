@@ -8,7 +8,7 @@ import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_A
 public class ApiCLient {
     private static Retrofit retrofit = null;
 
-    public static Retrofit buildClient(){
+    public static Retrofit buildClient() {
         if (retrofit == null)
             retrofit = new Retrofit.Builder()
                     .baseUrl(BOOKING_API_BASE_URL)

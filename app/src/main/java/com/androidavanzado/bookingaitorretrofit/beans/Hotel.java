@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 
 @Entity(tableName = "hotel")
-
 public class Hotel {
 
     @PrimaryKey(autoGenerate = true)
@@ -35,11 +34,12 @@ public class Hotel {
     private boolean destacado;
 
 
-    public Hotel(String nombre){
+    public Hotel(String nombre) {
         this.nombre = nombre;
     }
 
-    public Hotel(){}
+    public Hotel() {
+    }
 
     @Override
     public String toString() {
@@ -114,19 +114,33 @@ public class Hotel {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-    public int getNumHabitaciones() { return numHabitaciones; }
+    public int getNumHabitaciones() {
+        return numHabitaciones;
+    }
 
-    public void setNumHabitaciones(int numHabitaciones) { this.numHabitaciones = numHabitaciones; }
+    public void setNumHabitaciones(int numHabitaciones) {
+        this.numHabitaciones = numHabitaciones;
+    }
 
-    public int getNumReservas() { return numReservas; }
+    public int getNumReservas() {
+        return numReservas;
+    }
 
-    public void setNumReservas(int numReservas) { this.numReservas = numReservas; }
+    public void setNumReservas(int numReservas) {
+        this.numReservas = numReservas;
+    }
 
-    public boolean getDestacado() { return destacado; }
+    public boolean getDestacado() {
+        return destacado;
+    }
 
-    public void setDestacado(boolean destacado) { this.destacado = destacado; }
+    public void setDestacado(boolean destacado) {
+        this.destacado = destacado;
+    }
 
 
 }

@@ -33,7 +33,7 @@
         android:id="@+id/pb_habitacion_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"/>
+        android:layout_gravity="center_vertical|center_horizontal" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detail_htabitacion_constraint"

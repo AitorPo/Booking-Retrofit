@@ -10,9 +10,9 @@ public class ListHotelByDestacadoPresenter implements ListHotelByDestacadoContra
     private ListHotelByDestacadoModel model;
     private ListHotelByDestacadoContract.View view;
 
-    public ListHotelByDestacadoPresenter(ListHotelByDestacadoContract.View view){
+    public ListHotelByDestacadoPresenter(ListHotelByDestacadoContract.View view) {
         this.view = view;
-        this. model = new ListHotelByDestacadoModel();
+        this.model = new ListHotelByDestacadoModel();
     }
 
     @Override

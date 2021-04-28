@@ -47,7 +47,7 @@ public class DetailsHotelModel implements DetailsHotelContract.Model {
 
             @Override
             public void onFailure(Call<Hotel> call, Throwable t) {
-                Log.e(TAG,t.toString());
+                Log.e(TAG, t.toString());
                 onDetailsHotelListener.onReject(t);
             }
         });

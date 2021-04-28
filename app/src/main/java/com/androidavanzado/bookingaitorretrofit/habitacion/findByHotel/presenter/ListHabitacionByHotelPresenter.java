@@ -10,7 +10,7 @@ public class ListHabitacionByHotelPresenter implements ListHabitacionByHotelCont
     private ListHabitacionByHotelModel model;
     private ListHabitacionByHotelContract.View view;
 
-    public ListHabitacionByHotelPresenter(ListHabitacionByHotelContract.View view){
+    public ListHabitacionByHotelPresenter(ListHabitacionByHotelContract.View view) {
         model = new ListHabitacionByHotelModel();
         this.view = view;
     }

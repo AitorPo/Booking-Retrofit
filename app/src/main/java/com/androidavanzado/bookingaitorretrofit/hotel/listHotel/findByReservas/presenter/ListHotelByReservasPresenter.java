@@ -10,7 +10,7 @@ public class ListHotelByReservasPresenter implements ListHotelByReservasContract
     private ListHotelByReservasModel model;
     private ListHotelByReservasContract.View view;
 
-    public ListHotelByReservasPresenter(ListHotelByReservasContract.View view){
+    public ListHotelByReservasPresenter(ListHotelByReservasContract.View view) {
         model = new ListHotelByReservasModel();
         this.view = view;
     }

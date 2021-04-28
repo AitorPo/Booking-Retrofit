@@ -10,7 +10,7 @@ public class ListHotelByCiudadPresenter implements ListHotelByCiudadContract.Pre
     ListHotelByCiudadModel model;
     ListHotelByCiudadContract.View view;
 
-    public ListHotelByCiudadPresenter(ListHotelByCiudadContract.View view){
+    public ListHotelByCiudadPresenter(ListHotelByCiudadContract.View view) {
         this.view = view;
         model = new ListHotelByCiudadModel();
     }

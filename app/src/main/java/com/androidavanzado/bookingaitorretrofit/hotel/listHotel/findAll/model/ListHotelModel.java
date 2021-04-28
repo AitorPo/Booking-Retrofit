@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
+import com.androidavanzado.bookingaitorretrofit.data.local.HotelRepository;
 import com.androidavanzado.bookingaitorretrofit.data.network.Resource;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.contract.ListHotelContract;
 import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
@@ -13,6 +14,7 @@ import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +28,16 @@ import static com.androidavanzado.bookingaitorretrofit.utils.Constants.QUERY;
 public class ListHotelModel implements ListHotelContract.Model {
     private final String TAG = "ListHotelModel";
 
-    private LiveData<Resource<Hotel>> hotelArrayList;
+    private final LiveData<Resource<Hotel>> resourceLiveDataHotelList;
+
+    public ListHotelModel() {
+        HotelRepository hotelRepository = new HotelRepository();
+        resourceLiveDataHotelList = hotelRepository.getAllHotels();
+    }
+
+    public LiveData<Resource<Hotel>> getAllHotelsRoomDB() {
+        return resourceLiveDataHotelList;
+    }
 
     @Override
     public void getHotelesLH(final OnListHotelListener onListHotelListener) {
@@ -37,22 +48,21 @@ public class ListHotelModel implements ListHotelContract.Model {
         params.put(QUERY, FIND_ALL);
 
 
-        Call<ArrayList<Hotel>> call = apiService.getAllHotels(params);
-        call.enqueue(new Callback<ArrayList<Hotel>>() {
+        Call<List<Hotel>> call = apiService.getAllHotels(params);
+        call.enqueue(new Callback<List<Hotel>>() {
             @Override
-            public void onResponse(Call<ArrayList<Hotel>> call, Response<ArrayList<Hotel>> response) {
-                ArrayList<Hotel> hotels = response.body();
+            public void onResponse(Call<List<Hotel>> call, Response<List<Hotel>> response) {
+                List<Hotel> hotels = response.body();
                 Log.d(TAG, "Lista de hoteles cargada");
-                onListHotelListener.onResolve(hotels);
+                onListHotelListener.onResolve((ArrayList<Hotel>) hotels);
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Hotel>> call, Throwable t) {
+            public void onFailure(Call<List<Hotel>> call, Throwable t) {
                 Log.e(TAG, t.toString());
                 onListHotelListener.onReject(t);
             }
         });
-
     }
 }
 

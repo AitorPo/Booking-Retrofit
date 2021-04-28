@@ -1,5 +1,7 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.view;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
@@ -32,7 +34,7 @@ import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion
 
 import java.util.ArrayList;
 
-public class ListHotelByPuntuacionFragment extends Fragment implements ListHotelByPuntuacionContract.View  {
+public class ListHotelByPuntuacionFragment extends Fragment implements ListHotelByPuntuacionContract.View {
     private final String TAG = "ListHotelByPuntuacionFragment";
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -104,8 +106,7 @@ public class ListHotelByPuntuacionFragment extends Fragment implements ListHotel
 
     @Override
     public void onSuccess(ArrayList<Hotel> hoteles) {
-        constraintLayout.setVisibility(View.VISIBLE);
-        pbProgress.setVisibility(View.GONE);
+        crossfade();
         linearLayout.setVisibility(View.GONE);
         adapter = new ListHotelAdapter(hoteles, getContext(), idHotel -> getActivity().getSupportFragmentManager()
                 .beginTransaction()
@@ -117,6 +118,34 @@ public class ListHotelByPuntuacionFragment extends Fragment implements ListHotel
         recyclerView.setAdapter(adapter);
     }
 
+    private void crossfade() {
+
+        // Set the content view to 0% opacity but visible, so that it is visible
+        // (but fully transparent) during the animation.
+        constraintLayout.setAlpha(0f);
+        constraintLayout.setVisibility(View.VISIBLE);
+
+        // Animate the content view to 100% opacity, and clear any animation
+        // listener set on the view.
+        constraintLayout.animate()
+                .alpha(1f)
+                .setDuration(1000)
+                .setListener(null);
+
+        // Animate the loading view to 0% opacity. After the animation ends,
+        // set its visibility to GONE as an optimization step (it won't
+        // participate in layout passes, etc.)
+        pbProgress.animate()
+                .alpha(0f)
+                .setDuration(1000)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        pbProgress.setVisibility(View.GONE);
+                    }
+                });
+    }
+
     @SuppressLint("LongLogTag")
     @Override
     public void onFailure(Throwable throwable) {
@@ -124,7 +153,7 @@ public class ListHotelByPuntuacionFragment extends Fragment implements ListHotel
         showError();
     }
 
-    public void showError(){
+    public void showError() {
 
         linearLayout.setVisibility(View.VISIBLE);
         pbProgress.setVisibility(View.GONE);

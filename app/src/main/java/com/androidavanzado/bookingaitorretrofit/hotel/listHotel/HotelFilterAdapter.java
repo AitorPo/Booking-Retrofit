@@ -17,7 +17,7 @@ public class HotelFilterAdapter extends RecyclerView.Adapter<HotelFilterAdapter.
     private List<String> filters;
     private OnFilterClickListener listener;
 
-    public HotelFilterAdapter(List<String> filters, OnFilterClickListener listener){
+    public HotelFilterAdapter(List<String> filters, OnFilterClickListener listener) {
         this.filters = filters;
         this.listener = listener;
     }
@@ -54,14 +54,15 @@ public class HotelFilterAdapter extends RecyclerView.Adapter<HotelFilterAdapter.
             tvFilterName = itemView.findViewById(R.id.tvFilterName);
             cardViewFIlter = itemView.findViewById(R.id.cardViewFilter);
         }
-        public void bind(final String filter, final OnFilterClickListener listener){
+
+        public void bind(final String filter, final OnFilterClickListener listener) {
             cardViewFIlter.setOnClickListener(v -> {
                 listener.onFilterClick(filter);
             });
         }
     }
 
-    public interface OnFilterClickListener{
+    public interface OnFilterClickListener {
         void onFilterClick(String filter);
     }
 }

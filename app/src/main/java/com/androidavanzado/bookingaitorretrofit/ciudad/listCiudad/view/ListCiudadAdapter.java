@@ -25,7 +25,7 @@ public class ListCiudadAdapter extends RecyclerView.Adapter<ListCiudadAdapter.Vi
     Context context;
     OnCardClickListener onCardClickListener;
 
-    public ListCiudadAdapter(ArrayList<Ciudad> ciudades, Context context, OnCardClickListener onCardClickListener){
+    public ListCiudadAdapter(ArrayList<Ciudad> ciudades, Context context, OnCardClickListener onCardClickListener) {
         this.ciudades = ciudades;
         this.context = context;
         this.onCardClickListener = onCardClickListener;
@@ -69,13 +69,14 @@ public class ListCiudadAdapter extends RecyclerView.Adapter<ListCiudadAdapter.Vi
             cardViewCiudad = itemView.findViewById(R.id.cardViewCiudad);
         }
 
-        public void bind (Ciudad ciudad, OnCardClickListener onCardClickListener){
+        public void bind(Ciudad ciudad, OnCardClickListener onCardClickListener) {
             cardViewCiudad.setOnClickListener(v -> {
                 onCardClickListener.onCardClick(ciudad.getIdCiudad());
             });
         }
     }
-    public interface OnCardClickListener{
+
+    public interface OnCardClickListener {
         void onCardClick(int idCiudad);
     }
 }

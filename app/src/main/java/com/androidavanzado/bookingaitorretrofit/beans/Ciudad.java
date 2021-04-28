@@ -14,19 +14,32 @@ public class Ciudad {
     private int idCiudad;
     private String nombre, imagen;
 
-    public Ciudad(){}
+    public Ciudad() {
+    }
 
-    public int getIdCiudad() { return idCiudad; }
+    public int getIdCiudad() {
+        return idCiudad;
+    }
 
-    public void setIdCiudad(int idCiudad) { this.idCiudad = idCiudad; }
+    public void setIdCiudad(int idCiudad) {
+        this.idCiudad = idCiudad;
+    }
 
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public String getImagen() { return imagen; }
+    public String getImagen() {
+        return imagen;
+    }
 
-    public void setImagen(String imagen) { this.imagen = imagen; }
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
     @Override
     public String toString() {
@@ -36,16 +49,16 @@ public class Ciudad {
                 '}';
     }
 
-    public static ArrayList<Ciudad> getArrayListFromJSON(JSONArray listCiudad){
+    public static ArrayList<Ciudad> getArrayListFromJSON(JSONArray listCiudad) {
         ArrayList<Ciudad> ciudadArrayList = null;
         Ciudad ciudad = null;
-        try{
+        try {
             //Comprobamos sobre el JSONArray que pasamos por parámetro
-            if (listCiudad != null && listCiudad.length() > 0){
+            if (listCiudad != null && listCiudad.length() > 0) {
                 ciudadArrayList = new ArrayList<Ciudad>();
             }
             //Recorremos el JSONArray que recibimos como parámetro
-            for (int i = 0; i < listCiudad.length(); i ++){
+            for (int i = 0; i < listCiudad.length(); i++) {
                 /*Creamos JSONObject para recoger los elementos
                  * del JSONArray que pasamos como parámetro*/
                 JSONObject jsonObject = listCiudad.getJSONObject(i);

@@ -8,17 +8,20 @@ public interface ListHotelByPuntuacionContract {
     interface Model {
         interface OnListHotelByPuntuacionListener {
             void onResolve(ArrayList<Hotel> hotelArrayList);
+
             void onReject(Throwable throwable);
         }
+
         void getListByPuntuacionLH(OnListHotelByPuntuacionListener onListHotelByPuntuacionListener);
     }
 
-    interface Presenter{
+    interface Presenter {
         void getListPuntuacion();
     }
 
-    interface View{
+    interface View {
         void onSuccess(ArrayList<Hotel> hotelArrayList);
+
         void onFailure(Throwable throwable);
     }
 }

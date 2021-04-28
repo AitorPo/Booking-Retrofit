@@ -10,7 +10,7 @@ public class DetailsHabitacionPresenter implements DetailsHabitacionContract.Pre
     private DetailsHabitacionModel model;
     private DetailsHabitacionContract.View view;
 
-    public DetailsHabitacionPresenter(DetailsHabitacionContract.View view){
+    public DetailsHabitacionPresenter(DetailsHabitacionContract.View view) {
         model = new DetailsHabitacionModel();
         this.view = view;
     }

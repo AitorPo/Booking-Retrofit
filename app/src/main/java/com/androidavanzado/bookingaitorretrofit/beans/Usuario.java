@@ -12,7 +12,8 @@ public class Usuario {
     private String email, password;
     private int id;
 
-    public Usuario(){}
+    public Usuario() {
+    }
 
     @Override
     public String toString() {

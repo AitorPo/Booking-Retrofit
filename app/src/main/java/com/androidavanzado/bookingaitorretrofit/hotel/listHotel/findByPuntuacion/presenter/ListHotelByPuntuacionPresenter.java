@@ -10,10 +10,11 @@ public class ListHotelByPuntuacionPresenter implements ListHotelByPuntuacionCont
     private ListHotelByPuntuacionModel listHotelByPuntuacionModel;
     private ListHotelByPuntuacionContract.View view;
 
-    public ListHotelByPuntuacionPresenter(ListHotelByPuntuacionContract.View view){
+    public ListHotelByPuntuacionPresenter(ListHotelByPuntuacionContract.View view) {
         this.view = view;
         listHotelByPuntuacionModel = new ListHotelByPuntuacionModel();
     }
+
     @Override
     public void getListPuntuacion() {
         listHotelByPuntuacionModel.getListByPuntuacionLH(new ListHotelByPuntuacionContract.Model.OnListHotelByPuntuacionListener() {
@@ -21,6 +22,7 @@ public class ListHotelByPuntuacionPresenter implements ListHotelByPuntuacionCont
             public void onResolve(ArrayList<Hotel> hotelArrayList) {
                 view.onSuccess(hotelArrayList);
             }
+
             @Override
             public void onReject(Throwable throwable) {
                 view.onFailure(throwable);

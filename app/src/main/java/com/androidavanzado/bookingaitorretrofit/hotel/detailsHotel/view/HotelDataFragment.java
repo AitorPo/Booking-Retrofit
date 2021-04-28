@@ -1,14 +1,10 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.LiveData;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidavanzado.bookingaitorretrofit.R;
-import com.androidavanzado.bookingaitorretrofit.app.MyApp;
-import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
-import com.androidavanzado.bookingaitorretrofit.data.local.HotelDAO;
-import com.androidavanzado.bookingaitorretrofit.data.local.HotelLab;
-import com.androidavanzado.bookingaitorretrofit.data.local.HotelRoomDataBase;
-import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.contract.DetailsHabitacionContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view.ListHabitacionByHotelFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.contract.DetailsHotelContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.presenter.DetailsHotelPresenter;
@@ -40,7 +30,7 @@ import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMA
  * Use the {@link HotelDataFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HotelDataFragment extends Fragment implements DetailsHotelContract.View{
+public class HotelDataFragment extends Fragment implements DetailsHotelContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -166,16 +156,16 @@ public class HotelDataFragment extends Fragment implements DetailsHotelContract.
         return view;
     }
 
-    private void verTodasHabitaciones(int idHotel){
-         getActivity().getSupportFragmentManager()
-                 .beginTransaction()
-                 .replace(R.id.activity_dashboard_fragment_container,
-                            ListHabitacionByHotelFragment.newInstance(idHotel))
-                 .addToBackStack(null)
-                 .commit();
+    private void verTodasHabitaciones(int idHotel) {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_dashboard_fragment_container,
+                        ListHabitacionByHotelFragment.newInstance(idHotel))
+                .addToBackStack(null)
+                .commit();
     }
 
-    private void showError(){
+    private void showError() {
         pbDetails.setVisibility(View.GONE);
         linearLayout.setVisibility(View.VISIBLE);
 
@@ -195,23 +185,19 @@ public class HotelDataFragment extends Fragment implements DetailsHotelContract.
         pbDetails.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
 
-        HotelLab hotelLab = HotelLab.getInstance(getActivity());
-        Hotel newHotel = hotelLab.getHotelDetails(hotel);
-        Log.d(TAG, newHotel.toString());
-
 
         // Seteamos el valor de los elementos del layout con los datos de la API
-        tvNombre.setText(newHotel.getNombre());
-        tvPuntuacionCount.setText(String.valueOf(newHotel.getPuntuacion()));
-        Glide.with(this).load(BOOKING_API_PHOTO_HOTEL_URL + newHotel.getFoto() + IMG_FORMAT)
+        tvNombre.setText(hotel.getNombre());
+        tvPuntuacionCount.setText(String.valueOf(hotel.getPuntuacion()));
+        Glide.with(this).load(BOOKING_API_PHOTO_HOTEL_URL + hotel.getFoto() + IMG_FORMAT)
                 .centerInside()
                 .centerCrop()
                 .into(ivHotel);
 
-        tvDireccion.setText(newHotel.getDireccion());
-        tvReservasCount.setText(String.valueOf(newHotel.getNumReservas()));
-        tvNumHabitacionsCount.setText(String.valueOf(newHotel.getNumHabitaciones()));
-        tvDescripcion.setText(newHotel.getDescripcion());
+        tvDireccion.setText(hotel.getDireccion());
+        tvReservasCount.setText(String.valueOf(hotel.getNumReservas()));
+        tvNumHabitacionsCount.setText(String.valueOf(hotel.getNumHabitaciones()));
+        tvDescripcion.setText(hotel.getDescripcion());
 
         //tvLink.setOnClickListener(v -> verTodasHabitaciones(idHotel));
     }

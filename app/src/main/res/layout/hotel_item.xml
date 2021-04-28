@@ -18,16 +18,15 @@
     tools:ignore="ExtraText">
 
     <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/ll_img_hotel_list"
             android:layout_width="128dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/ivFotoHabitacion"
                 android:layout_width="match_parent"
@@ -40,8 +39,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center|top"
             android:layout_toEndOf="@id/ll_img_hotel_list"
-            android:background="@color/white"
-            >
+            android:background="@color/white">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -57,8 +55,7 @@
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:paddingTop="5dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
 
                 <TextView
@@ -71,24 +68,24 @@
                     android:textStyle="bold"
                     android:padding="3dp"
                     app:drawableLeftCompat="@drawable/ic_star"
-                    android:layout_below="@id/tvNombreHotel"/>
+                    android:layout_below="@id/tvNombreHotel" />
 
             </RelativeLayout>
-        <!--
-        <TextView
-            android:id="@+id/tvPuntos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/black_bg"
-            android:text=" Nota: "
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-            -->
+            <!--
+            <TextView
+                android:id="@+id/tvPuntos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/black_bg"
+                android:text=" Nota: "
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+                -->
         </LinearLayout>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

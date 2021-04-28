@@ -17,6 +17,7 @@ import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_HOTEL_URL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
@@ -26,7 +27,7 @@ public class ListHotelAdapter extends RecyclerView.Adapter<ListHotelAdapter.View
     Context context;
     OnCardClickListener onCardClickListener;
 
-    public ListHotelAdapter(ArrayList<Hotel> hotelArrayList, Context context, OnCardClickListener onCardClickListener){
+    public ListHotelAdapter(ArrayList<Hotel> hotelArrayList, Context context, OnCardClickListener onCardClickListener) {
         this.hotelArrayList = hotelArrayList;
         this.context = context;
         this.onCardClickListener = onCardClickListener;
@@ -58,7 +59,14 @@ public class ListHotelAdapter extends RecyclerView.Adapter<ListHotelAdapter.View
 
     @Override
     public int getItemCount() {
-        return hotelArrayList.size();
+        if (hotelArrayList != null)
+            return hotelArrayList.size();
+        else return 0;
+    }
+
+    public void setData(List<Hotel> hotelArrayList) {
+        this.hotelArrayList = (ArrayList<Hotel>) hotelArrayList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -76,11 +84,12 @@ public class ListHotelAdapter extends RecyclerView.Adapter<ListHotelAdapter.View
             cardViewHotel = itemView.findViewById(R.id.cardViewHabitacion);
         }
 
-        public void bind(Hotel hotel, final OnCardClickListener onCardClickListener){
+        public void bind(Hotel hotel, final OnCardClickListener onCardClickListener) {
             cardViewHotel.setOnClickListener(v -> onCardClickListener.onCardClick(hotel.getIdHotel()));
         }
     }
-    public interface OnCardClickListener{
+
+    public interface OnCardClickListener {
         void onCardClick(int idHotel);
     }
 }

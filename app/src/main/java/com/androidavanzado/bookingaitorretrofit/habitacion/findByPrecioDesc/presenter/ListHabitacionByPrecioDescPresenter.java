@@ -10,7 +10,7 @@ public class ListHabitacionByPrecioDescPresenter implements ListHabitacionByPrec
     private ListHabitacionByPrecioDescModel model;
     private ListHabitacionByPrecioDescContract.View view;
 
-    public ListHabitacionByPrecioDescPresenter(ListHabitacionByPrecioDescContract.View view){
+    public ListHabitacionByPrecioDescPresenter(ListHabitacionByPrecioDescContract.View view) {
         model = new ListHabitacionByPrecioDescModel();
         this.view = view;
     }

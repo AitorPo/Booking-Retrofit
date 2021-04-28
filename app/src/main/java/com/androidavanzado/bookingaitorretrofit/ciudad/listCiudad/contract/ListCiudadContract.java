@@ -5,20 +5,23 @@ import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import java.util.ArrayList;
 
 public interface ListCiudadContract {
-    interface Model{
-        interface OnListCiudadModelListener{
+    interface Model {
+        interface OnListCiudadModelListener {
             void onResolve(ArrayList<Ciudad> ciudadArrayList);
-            void onReject (Throwable throwable);
+
+            void onReject(Throwable throwable);
         }
+
         void getListCiudadLH(OnListCiudadModelListener onListCiudadModelListener);
     }
 
-    interface Presenter{
+    interface Presenter {
         void getCiudades();
     }
 
-    interface View{
+    interface View {
         void onSuccess(ArrayList<Ciudad> ciudadArrayList);
+
         void onFailure(Throwable throwable);
     }
 }

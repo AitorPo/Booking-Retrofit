@@ -2,11 +2,11 @@ package com.androidavanzado.bookingaitorretrofit.usuario;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Usuario;
 
-public class LoginPresenter implements LoginContract.Presenter{
+public class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private LoginModel model;
 
-    public LoginPresenter(LoginContract.View view){
+    public LoginPresenter(LoginContract.View view) {
         model = new LoginModel();
         this.view = view;
     }

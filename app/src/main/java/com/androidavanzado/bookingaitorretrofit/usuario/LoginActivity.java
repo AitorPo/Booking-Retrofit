@@ -1,8 +1,10 @@
 package com.androidavanzado.bookingaitorretrofit.usuario;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidavanzado.bookingaitorretrofit.DashboardActivity;
+import com.androidavanzado.bookingaitorretrofit.LoginToDashboardLottieActivity;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Usuario;
 import com.google.android.material.textfield.TextInputLayout;
@@ -25,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private LoginPresenter presenter;
     private ArrayList<Usuario> usuarios;
     private String etEmailValue, etPasswordValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +39,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         btnLogin.setOnClickListener(v -> {
 
-            if (etEmail.length() == 0 && etPassword.length() == 0){
+            if (etEmail.length() == 0 && etPassword.length() == 0) {
                 textInputLayoutUser.setError("Error");
                 textInputLayoutPassword.setError("Error");
                 Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_LONG).show();
-            } else if (etEmail.length() == 0){
+            } else if (etEmail.length() == 0) {
                 textInputLayoutUser.setError("Rellena este campo");
-            } else if(etPassword.length() == 0){
+            } else if (etPassword.length() == 0) {
                 textInputLayoutPassword.setError("Rellena este campo");
             }
             etEmailValue = etEmail.getText().toString();
@@ -51,11 +55,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             usuario.setPassword(etPasswordValue);
             presenter.doLoginPresenter(usuario);
         });
-
-
     }
 
-    public void initComponents(){
+
+    public void initComponents() {
         etEmail = findViewById(R.id.tvEmail);
         etPassword = findViewById(R.id.tvPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -66,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void onSuccess(Usuario usuario) {
         Toast.makeText(this, "Hola de nuevo " + usuario.getEmail(), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, DashboardActivity.class);
+        Intent intent = new Intent(this, LoginToDashboardLottieActivity.class);
         startActivity(intent);
     }
 

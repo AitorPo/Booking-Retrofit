@@ -20,7 +20,7 @@ import static com.androidavanzado.bookingaitorretrofit.utils.Constants.PASSWORD;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.QUERY;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.USUARIO;
 
-public class LoginModel implements LoginContract.Model{
+public class LoginModel implements LoginContract.Model {
 
     private static final String TAG = "LoginModel";
 
@@ -29,7 +29,7 @@ public class LoginModel implements LoginContract.Model{
         ApiService apiService = ApiCLient.buildClient()
                 .create(ApiService.class);
 
-        HashMap<String,String> params = new HashMap<>();
+        HashMap<String, String> params = new HashMap<>();
         params.put(ACTION, USUARIO);
         params.put(QUERY, LOGIN);
         params.put(EMAIL, usuario.getEmail());

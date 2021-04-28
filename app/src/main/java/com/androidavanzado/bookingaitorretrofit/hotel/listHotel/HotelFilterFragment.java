@@ -79,7 +79,7 @@ public class HotelFilterFragment extends Fragment {
         recyclerviewFilter = view.findViewById(R.id.recyclerviewFilter);
         recyclerviewFilter.setLayoutManager(linearLayoutManager);
         adapter = new HotelFilterAdapter(filterList, filter -> {
-            switch (filter){
+            switch (filter) {
                 case "Destacados":
                     Log.d("FILTER", filter);
                     getActivity().getSupportFragmentManager()
@@ -87,7 +87,7 @@ public class HotelFilterFragment extends Fragment {
                             .replace(R.id.activity_dashboard_fragment_container, ListHotelByDestacadoFragment.newInstance(1))
                             .addToBackStack(null)
                             .commit();
-                break;
+                    break;
                 case "Mejor puntuados":
                     Log.d("FILTER", filter);
                     getActivity().getSupportFragmentManager()
@@ -95,7 +95,7 @@ public class HotelFilterFragment extends Fragment {
                             .replace(R.id.activity_dashboard_fragment_container, ListHotelByPuntuacionFragment.newInstance(1))
                             .addToBackStack(null)
                             .commit();
-                break;
+                    break;
                 case "Más reservas":
                     Log.d("FILTER", filter);
                     getActivity().getSupportFragmentManager()
@@ -103,7 +103,7 @@ public class HotelFilterFragment extends Fragment {
                             .replace(R.id.activity_dashboard_fragment_container, ListHotelByReservasFragment.newInstance(1))
                             .addToBackStack(null)
                             .commit();
-                break;
+                    break;
                 case "Más caros":
                     Log.d("FILTER", filter);
                     getActivity().getSupportFragmentManager()
@@ -111,7 +111,7 @@ public class HotelFilterFragment extends Fragment {
                             .replace(R.id.activity_dashboard_fragment_container, ListHabitacionByPrecioDescFragment.newInstance(1))
                             .addToBackStack(null)
                             .commit();
-                break;
+                    break;
                 case "Más baratos":
                     Log.d("FILTER", filter);
                     getActivity().getSupportFragmentManager()
@@ -119,7 +119,7 @@ public class HotelFilterFragment extends Fragment {
                             .replace(R.id.activity_dashboard_fragment_container, ListHabitacionByPrecioAscFragment.newInstance(1))
                             .addToBackStack(null)
                             .commit();
-                break;
+                    break;
             }
             //Log.d("FILTER", filter);
         });

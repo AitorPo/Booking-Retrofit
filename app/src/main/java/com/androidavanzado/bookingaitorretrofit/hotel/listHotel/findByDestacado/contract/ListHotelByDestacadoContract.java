@@ -5,20 +5,23 @@ import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import java.util.ArrayList;
 
 public interface ListHotelByDestacadoContract {
-    interface Model{
-        interface OnListHotelByDestacadoListener{
+    interface Model {
+        interface OnListHotelByDestacadoListener {
             void onResolve(ArrayList<Hotel> hotelArrayList);
+
             void onReject(Throwable throwable);
         }
+
         void getDestacadosLH(OnListHotelByDestacadoListener onListHotelByDestacadoListener);
     }
 
-    interface Presenter{
+    interface Presenter {
         void getHotelesDestacados();
     }
 
-    interface View{
+    interface View {
         void onSuccess(ArrayList<Hotel> hotelArrayList);
+
         void onFailure(Throwable throwable);
     }
 }

@@ -26,7 +26,7 @@ public class ListHabitacionAdapter extends RecyclerView.Adapter<ListHabitacionAd
     Context context;
     OnCardClickListener onCardClickListener;
 
-    public ListHabitacionAdapter(ArrayList<Habitacion> habitaciones, Context context, OnCardClickListener onCardClickListener){
+    public ListHabitacionAdapter(ArrayList<Habitacion> habitaciones, Context context, OnCardClickListener onCardClickListener) {
         this.habitaciones = habitaciones;
         this.context = context;
         this.onCardClickListener = onCardClickListener;
@@ -48,7 +48,7 @@ public class ListHabitacionAdapter extends RecyclerView.Adapter<ListHabitacionAd
         holder.tvPrecio.setText(String.valueOf(holder.habitacion.getPrecio()) + COIN);
         holder.tvCamas.setText(String.valueOf(holder.habitacion.getCamas()));
         holder.tvNumHabitacion.setText(String.valueOf(holder.habitacion.getNumHabitacion()));
-        if (holder.habitacion.isOcupada()){
+        if (holder.habitacion.isOcupada()) {
             holder.tvDisponible.setText(" OCUPADA ");
         } else {
             holder.tvDisponible.setText(" DISPONIBLE ");
@@ -83,11 +83,13 @@ public class ListHabitacionAdapter extends RecyclerView.Adapter<ListHabitacionAd
             cardViewHabitacion = itemView.findViewById(R.id.cardViewHabitacion);
             tvNumHabitacion = itemView.findViewById(R.id.tvNumeroHab);
         }
-        public void bind(Habitacion habitacion, final OnCardClickListener onCardClickListener){
+
+        public void bind(Habitacion habitacion, final OnCardClickListener onCardClickListener) {
             cardViewHabitacion.setOnClickListener(v -> onCardClickListener.onCardClick(habitacion.getIdHabitacion()));
         }
     }
-    public interface OnCardClickListener{
+
+    public interface OnCardClickListener {
         void onCardClick(int idHabitacion);
     }
 }

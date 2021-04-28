@@ -63,7 +63,7 @@ public abstract class NetworkBoundResource<ResultType extends Hotel, RequestType
 
             @Override
             protected void onPostExecute(Void aVoid) {
-                result.addSource(loadFromDb(), newData -> result.setValue(Resource.success(newData)));
+                result.addSource(loadFromDb(), newData -> result.setValue(Resource.success((ResultType) newData)));
             }
         }.execute();
     }

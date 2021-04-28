@@ -6,6 +6,7 @@ import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.beans.Usuario;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -15,7 +16,7 @@ import retrofit2.http.QueryMap;
 public interface ApiService {
 
     @GET("/BookingAitor/Controller")
-    Call<ArrayList<Hotel>> getAllHotels(
+    Call<List<Hotel>> getAllHotels(
             @QueryMap Map<String, String> params);
 
     @GET("/BookingAitor/Controller")
@@ -31,39 +32,39 @@ public interface ApiService {
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<Ciudad> getCiudadById (
+    Call<Ciudad> getCiudadById(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Ciudad>> getAllCiudades (
+    Call<ArrayList<Ciudad>> getAllCiudades(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Hotel>> getHotelesByCiudad (
+    Call<ArrayList<Hotel>> getHotelesByCiudad(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Hotel>> getHotelesByDestacado (
+    Call<ArrayList<Hotel>> getHotelesByDestacado(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Hotel>> getHotelesByPuntuacion (
+    Call<ArrayList<Hotel>> getHotelesByPuntuacion(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Hotel>> getHotelesByReservas (
+    Call<ArrayList<Hotel>> getHotelesByReservas(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Habitacion>> getHabitacionByPrecioAsc (
+    Call<ArrayList<Habitacion>> getHabitacionByPrecioAsc(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Habitacion>> getHabitacionByPrecioDesc (
+    Call<ArrayList<Habitacion>> getHabitacionByPrecioDesc(
             @QueryMap Map<String, String> params);
 
     @GET("BookingAitor/Controller")
-    Call<ArrayList<Usuario>> login (
+    Call<ArrayList<Usuario>> login(
             @QueryMap Map<String, String> params);
 
 

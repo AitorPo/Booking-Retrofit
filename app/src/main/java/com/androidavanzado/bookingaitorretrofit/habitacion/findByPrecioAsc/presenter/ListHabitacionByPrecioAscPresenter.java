@@ -10,7 +10,7 @@ public class ListHabitacionByPrecioAscPresenter implements ListHabitacionByPreci
     private ListHabitacionByPrecioAscModel model;
     private ListHabitacionByPrecioAscContract.View view;
 
-    public ListHabitacionByPrecioAscPresenter(ListHabitacionByPrecioAscContract.View view){
+    public ListHabitacionByPrecioAscPresenter(ListHabitacionByPrecioAscContract.View view) {
         model = new ListHabitacionByPrecioAscModel();
         this.view = view;
     }

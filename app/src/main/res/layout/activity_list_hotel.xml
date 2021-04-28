@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashboardActivity"
+    android:animateLayoutChanges="true"
     >
     <!-- LAYOUT ERROR -->
     <LinearLayout
@@ -15,7 +16,8 @@
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:animateLayoutChanges="true">
 
         <TextView
             android:id="@+id/tvError"
@@ -39,7 +41,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"/>
+        android:layout_gravity="center_horizontal|center_vertical" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -47,13 +49,12 @@
         android:id="@+id/constraint_all_hoteles">
 
         <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/hotel_item" />
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/hotel_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

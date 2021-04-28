@@ -22,7 +22,8 @@ public class Habitacion {
     private String descripcion, foto;
     private boolean ocupada;
 
-    public Habitacion(){}
+    public Habitacion() {
+    }
 
     @Override
     public String toString() {
@@ -38,50 +39,81 @@ public class Habitacion {
                 '}';
     }
 
-    public String getFoto() { return foto; }
+    public String getFoto() {
+        return foto;
+    }
 
-    public void setFoto(String foto) { this.foto = foto; }
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
-    public int getIdHabitacion() { return idHabitacion; }
+    public int getIdHabitacion() {
+        return idHabitacion;
+    }
 
-    public void setIdHabitacion(int idHabitacion) { this.idHabitacion = idHabitacion; }
+    public void setIdHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
 
-    public int getIdHotel() { return idHotel; }
+    public int getIdHotel() {
+        return idHotel;
+    }
 
-    public void setIdHotel(int idHotel) { this.idHotel = idHotel; }
+    public void setIdHotel(int idHotel) {
+        this.idHotel = idHotel;
+    }
 
-    public int getCamas() { return camas; }
+    public int getCamas() {
+        return camas;
+    }
 
-    public void setCamas(int camas) { this.camas = camas; }
+    public void setCamas(int camas) {
+        this.camas = camas;
+    }
 
-    public int getNumHabitacion() { return numHabitacion; }
+    public int getNumHabitacion() {
+        return numHabitacion;
+    }
 
-    public void setNumHabitacion(int numHabitacion) { this.numHabitacion = numHabitacion; }
+    public void setNumHabitacion(int numHabitacion) {
+        this.numHabitacion = numHabitacion;
+    }
 
-    public double getPrecio() { return precio; }
+    public double getPrecio() {
+        return precio;
+    }
 
-    public void setPrecio(double precio) { this.precio = precio; }
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
-    public String getDescripcion() { return descripcion; }
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-    public boolean isOcupada() { return ocupada; }
+    public boolean isOcupada() {
+        return ocupada;
+    }
 
-    public void setOcupada(boolean ocupada) { this.ocupada = ocupada; }
+    public void setOcupada(boolean ocupada) {
+        this.ocupada = ocupada;
+    }
 
 
-
-    public static ArrayList<Habitacion> getArrayListFromJSON(JSONArray listHabitacion){
+    public static ArrayList<Habitacion> getArrayListFromJSON(JSONArray listHabitacion) {
         ArrayList<Habitacion> habitacionArrayList = null;
         Habitacion habitacion = null;
-        try{
+        try {
             //Comprobamos sobre el JSONArray que pasamos por parámetro
-            if (listHabitacion != null && listHabitacion.length() > 0){
+            if (listHabitacion != null && listHabitacion.length() > 0) {
                 habitacionArrayList = new ArrayList<Habitacion>();
             }
             //Recorremos el JSONArray que recibimos como parámetro
-            for (int i = 0; i < listHabitacion.length(); i ++){
+            for (int i = 0; i < listHabitacion.length(); i++) {
                 /*Creamos JSONObject para recoger los elementos
                  * del JSONArray que pasamos como parámetro*/
                 JSONObject jsonObject = listHabitacion.getJSONObject(i);

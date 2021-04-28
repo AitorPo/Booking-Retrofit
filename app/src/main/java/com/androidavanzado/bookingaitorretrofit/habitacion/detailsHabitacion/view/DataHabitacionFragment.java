@@ -37,7 +37,7 @@ import static com.androidavanzado.bookingaitorretrofit.utils.Constants.HABITACIO
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
 
-public class DataHabitacionFragment extends Fragment implements DetailsHabitacionContract.View{
+public class DataHabitacionFragment extends Fragment implements DetailsHabitacionContract.View {
     private DetailsHabitacionPresenter presenter;
     private ImageView ivHotel;
     private TextView tvPuntuacionCount, tvLink, tvNumeroHab, tvDireccion,
@@ -63,19 +63,20 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
 
     private static final String TAG = "DetailsHabitacionFragment";
 
-    public DataHabitacionFragment(){
+    public DataHabitacionFragment() {
 
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            presenter = new DetailsHabitacionPresenter(this);
-        if (getArguments() != null){
+        presenter = new DetailsHabitacionPresenter(this);
+        if (getArguments() != null) {
             idHabitacion = getArguments().getInt(ARG_PARAM1);
         }
     }
 
-    public static DataHabitacionFragment newInstance(int idHabitacion){
+    public static DataHabitacionFragment newInstance(int idHabitacion) {
         DataHabitacionFragment fragment = new DataHabitacionFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, idHabitacion);
@@ -126,10 +127,10 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
 
         tvDireccion.setText(String.valueOf(habitacion.getCamas()));
         tvReservasCount.setText(String.valueOf(habitacion.getPrecio()));
-        if(habitacion.isOcupada()){
+        if (habitacion.isOcupada()) {
             tvNumHabitacionsCount.setText(" No ");
             tvLink.setVisibility(View.INVISIBLE);
-        } else{
+        } else {
             tvNumHabitacionsCount.setText(" Sí ");
             tvLink.setVisibility(View.VISIBLE);
             tvLink.setLinksClickable(false);
@@ -142,7 +143,7 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         showError();
     }
 
-    private void showError(){
+    private void showError() {
         pbDetails.setVisibility(View.GONE);
         linearLayout.setVisibility(View.VISIBLE);
 
