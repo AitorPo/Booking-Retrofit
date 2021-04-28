@@ -2,8 +2,6 @@ package com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.co
 
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 
-import java.util.ArrayList;
-
 public interface DetailsHabitacionContract {
     interface Model {
         interface OnDetailsHabitacionListener {

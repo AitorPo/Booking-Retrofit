@@ -1,6 +1,5 @@
 package com.androidavanzado.bookingaitorretrofit.data.network;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 
 import androidx.annotation.MainThread;

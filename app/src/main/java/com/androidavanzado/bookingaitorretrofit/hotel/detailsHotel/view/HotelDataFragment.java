@@ -1,10 +1,6 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view;
 
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
@@ -184,7 +183,6 @@ public class HotelDataFragment extends Fragment implements DetailsHotelContract.
         detailConstraint.setVisibility(View.VISIBLE);
         pbDetails.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
-
 
         // Seteamos el valor de los elementos del layout con los datos de la API
         tvNombre.setText(hotel.getNombre());

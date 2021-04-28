@@ -4,12 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,10 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,14 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
-
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view.HotelDataFragment;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.presenter.ListHotelPresenter;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.AllHotelFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.ListHotelAdapter;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.contract.ListHotelByDestacadoContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.presenter.ListHotelByDestacadoPresenter;
-
 
 import java.util.ArrayList;
 

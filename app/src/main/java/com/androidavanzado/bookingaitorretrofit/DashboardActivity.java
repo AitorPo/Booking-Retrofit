@@ -3,13 +3,13 @@ package com.androidavanzado.bookingaitorretrofit;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.HotelFilterFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.AllHotelFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 public class DashboardActivity extends AppCompatActivity {
 

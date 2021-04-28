@@ -22,18 +22,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
-//import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.view.DataHabitacionFragment;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.contract.ListHabitacionByHotelContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.presenter.ListHabitacionByHotelPresenter;
+
+import java.util.ArrayList;
+
+//import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
 /*import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.view.ListHabitacionByPrecioAscActivity;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioDesc.view.ListHabitacionByPrecioDescActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.ListHotelActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.view.ListHotelByDestacadoActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.view.ListHotelByPuntuacionActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByReservas.view.ListHotelByReservasActivity;*/
-
-import java.util.ArrayList;
 
 public class ListHabitacionByHotelFragment extends Fragment implements ListHabitacionByHotelContract.View {
     private static final String TAG = "ListHabitacionByHotelFragment";

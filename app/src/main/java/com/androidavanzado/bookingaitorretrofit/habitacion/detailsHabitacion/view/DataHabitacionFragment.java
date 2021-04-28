@@ -1,9 +1,6 @@
 package com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.view;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,27 +11,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
-//import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.contract.DetailsHabitacionContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.presenter.DetailsHabitacionPresenter;
+import com.bumptech.glide.Glide;
+
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_HABITACION_URL;
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
+
+//import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
 /*import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.view.ListHabitacionByPrecioAscActivity;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioDesc.view.ListHabitacionByPrecioDescActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.ListHotelActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByDestacado.view.ListHotelByDestacadoActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.view.ListHotelByPuntuacionActivity;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByReservas.view.ListHotelByReservasActivity;*/
-import com.bumptech.glide.Glide;
-
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_HABITACION_URL;
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_HOTEL_URL;
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.HABITACION_ID;
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
 
 public class DataHabitacionFragment extends Fragment implements DetailsHabitacionContract.View {

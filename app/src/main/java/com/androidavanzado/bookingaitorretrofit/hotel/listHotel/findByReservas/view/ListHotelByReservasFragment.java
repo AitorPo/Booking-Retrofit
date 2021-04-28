@@ -15,8 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,8 +24,6 @@ import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view.HotelDataFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.ListHotelAdapter;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.presenter.ListHotelByPuntuacionPresenter;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByPuntuacion.view.ListHotelByPuntuacionFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByReservas.contract.ListHotelByReservasContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByReservas.presenter.ListHotelByReservasPresenter;
 

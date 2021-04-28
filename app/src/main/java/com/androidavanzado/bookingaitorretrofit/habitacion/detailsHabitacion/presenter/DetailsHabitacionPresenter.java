@@ -4,8 +4,6 @@ import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.contract.DetailsHabitacionContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.model.DetailsHabitacionModel;
 
-import java.util.ArrayList;
-
 public class DetailsHabitacionPresenter implements DetailsHabitacionContract.Presenter {
     private DetailsHabitacionModel model;
     private DetailsHabitacionContract.View view;

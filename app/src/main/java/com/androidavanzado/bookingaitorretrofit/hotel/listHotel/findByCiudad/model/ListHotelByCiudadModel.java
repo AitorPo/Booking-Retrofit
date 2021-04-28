@@ -3,9 +3,9 @@ package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.mo
 import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.contract.ListHotelByCiudadContract;
 import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
 import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.contract.ListHotelByCiudadContract;
 
 import java.util.ArrayList;
 import java.util.HashMap;

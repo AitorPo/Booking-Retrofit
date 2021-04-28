@@ -4,7 +4,6 @@ import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.contract.ListCiudadContract;
 import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.model.ListCiudadModel;
 
-
 import java.util.ArrayList;
 
 public class ListCiudadPresenter implements ListCiudadContract.Presenter {

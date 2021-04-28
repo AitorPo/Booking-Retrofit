@@ -4,14 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,20 +14,22 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidavanzado.bookingaitorretrofit.App;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
-import com.androidavanzado.bookingaitorretrofit.data.local.HotelDAO;
-import com.androidavanzado.bookingaitorretrofit.data.local.HotelRepository;
 import com.androidavanzado.bookingaitorretrofit.data.local.HotelRoomDataBase;
-import com.androidavanzado.bookingaitorretrofit.data.network.Resource;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.view.HotelDataFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.contract.ListHotelContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.presenter.ListHotelPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * A fragment representing a list of Items.
@@ -56,6 +50,7 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
     private ConstraintLayout constraintLayout;
     private TextView tvCiudad;
     private int animationTime;
+    private Context context;
 
     private List<Hotel> hotelArrayList;
 
@@ -94,8 +89,9 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_list_hotel, container, false);
 
-        Context context = view.getContext();
+        context = view.getContext();
 
+        hotelArrayList = new ArrayList<>();
         animationTime = getResources().getInteger(
                 R.integer.config_navAnimTime
         );
@@ -115,7 +111,17 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
+
         return view;
+    }
+
+    private void loadHotelsFromRoomDb(){
+        hotelArrayList = HotelRoomDataBase.getInstance(context).getHotelDAO().getHotelsRoomDatabase();
+
+        for (Hotel hotel : hotelArrayList){
+            Log.d(TAG, hotel.toString());
+        }
+        adapter.setData(hotelArrayList);
     }
 
     @Override
@@ -132,7 +138,7 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
                 .addToBackStack(null)
                 .commit());
         recyclerView.setAdapter(adapter);
-
+        loadHotelsFromRoomDb();
     }
 
     private void crossfade() {

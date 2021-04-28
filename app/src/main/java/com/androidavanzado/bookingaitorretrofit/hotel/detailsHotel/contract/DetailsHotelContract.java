@@ -2,8 +2,6 @@ package com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.contract;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 
-import java.util.ArrayList;
-
 public interface DetailsHotelContract {
     interface Model {
         interface OnDetailsHotelListener {

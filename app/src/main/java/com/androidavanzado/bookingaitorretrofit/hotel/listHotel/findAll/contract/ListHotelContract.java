@@ -1,6 +1,5 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.contract;
 
-import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 
 import java.util.ArrayList;

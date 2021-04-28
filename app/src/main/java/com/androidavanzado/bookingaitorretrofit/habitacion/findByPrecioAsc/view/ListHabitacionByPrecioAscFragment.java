@@ -27,7 +27,6 @@ import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view.List
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.contract.ListHabitacionByPrecioAscContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByPrecioAsc.presenter.ListHabitacionByPrecioAscPresenter;
 
-
 import java.util.ArrayList;
 
 public class ListHabitacionByPrecioAscFragment extends Fragment implements ListHabitacionByPrecioAscContract.View {

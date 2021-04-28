@@ -1,15 +1,11 @@
 package com.androidavanzado.bookingaitorretrofit;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 
-import com.androidavanzado.bookingaitorretrofit.DashboardActivity;
-import com.androidavanzado.bookingaitorretrofit.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginToDashboardLottieActivity extends AppCompatActivity {
 

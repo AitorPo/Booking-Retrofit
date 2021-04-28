@@ -1,18 +1,22 @@
 package com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.presenter;
 
+import android.util.Log;
+
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.contract.DetailsHotelContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.model.DetailsHotelModel;
-
-import java.util.ArrayList;
+import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.model.HotelRepository;
 
 public class DetailsHotelPresenter implements DetailsHotelContract.Presenter {
+    private static final String TAG = "DetailsHotelPresenter";
     private DetailsHotelModel detailsHotelModel;
     private DetailsHotelContract.View view;
+    private HotelRepository repository;
 
     public DetailsHotelPresenter(DetailsHotelContract.View view) {
         this.view = view;
         this.detailsHotelModel = new DetailsHotelModel();
+        repository = new HotelRepository();
     }
 
     @Override
@@ -20,8 +24,9 @@ public class DetailsHotelPresenter implements DetailsHotelContract.Presenter {
         detailsHotelModel.getHotelLS(new DetailsHotelContract.Model.OnDetailsHotelListener() {
             @Override
             public void onResolve(Hotel hotel) {
-
-                view.onSuccess(hotel);
+                Hotel hotelRoomDataBase = repository.getHotelDetailsRoom(idHotel);
+                Log.d(TAG, hotelRoomDataBase.toString());
+                view.onSuccess(hotelRoomDataBase);
             }
 
             @Override

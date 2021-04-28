@@ -1,6 +1,5 @@
 package com.androidavanzado.bookingaitorretrofit.data.local;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -12,12 +11,13 @@ import java.util.List;
 
 @Dao
 public interface HotelDAO {
-    @Query("SELECT * FROM hotel")
-    LiveData<Hotel> getHotelsRoomDatabase();
+    // Llamamos a la tabla 'h' para hacer más evidente la distinción a la hora de obtener los datos
+    @Query("SELECT * FROM h")
+    List<Hotel> getHotelsRoomDatabase();
+
+    @Query("SELECT * FROM h WHERE idHotel = :idHotel")
+    Hotel getHotelDetailsRoom(int idHotel);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void saveHotel(List<Hotel> hotelList);
-
-    @Query("SELECT * FROM hotel WHERE idHotel = :idHotel")
-    Hotel getHotelDetailsRoom(int idHotel);
+    void insertAll(Hotel... hotels);
 }

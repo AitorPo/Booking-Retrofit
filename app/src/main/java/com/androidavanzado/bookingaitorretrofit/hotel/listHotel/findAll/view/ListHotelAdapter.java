@@ -12,7 +12,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidavanzado.bookingaitorretrofit.R;
-import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.bumptech.glide.Glide;
 

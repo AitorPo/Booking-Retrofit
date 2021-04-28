@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androidavanzado.bookingaitorretrofit.App;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.contract.ListCiudadContract;
@@ -158,6 +159,6 @@ public class ListCiudadFragment extends Fragment implements ListCiudadContract.V
                 presenter.getCiudades();
             }
         });
-        Toast.makeText(getActivity().getApplicationContext(), R.string.internet_error, Toast.LENGTH_LONG).show();
+        Toast.makeText(App.getContext(), R.string.internet_error, Toast.LENGTH_LONG).show();
     }
 }

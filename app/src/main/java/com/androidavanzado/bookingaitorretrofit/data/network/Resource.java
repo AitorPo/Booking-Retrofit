@@ -3,8 +3,6 @@ package com.androidavanzado.bookingaitorretrofit.data.network;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
-
 import static com.androidavanzado.bookingaitorretrofit.data.network.Status.ERROR;
 import static com.androidavanzado.bookingaitorretrofit.data.network.Status.LOADING;
 import static com.androidavanzado.bookingaitorretrofit.data.network.Status.SUCCESS;

@@ -4,9 +4,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.google.gson.annotations.Expose;
-
-@Entity(tableName = "hotel")
+@Entity(tableName = "h")
 public class Hotel {
 
     @PrimaryKey(autoGenerate = true)
