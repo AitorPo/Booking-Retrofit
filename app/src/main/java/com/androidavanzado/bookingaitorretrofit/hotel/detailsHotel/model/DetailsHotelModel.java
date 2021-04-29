@@ -6,7 +6,7 @@ import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
 import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.contract.DetailsHotelContract;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.model.HotelRepository;
+import com.androidavanzado.bookingaitorretrofit.data.local.HotelRepository;
 
 import java.util.HashMap;
 

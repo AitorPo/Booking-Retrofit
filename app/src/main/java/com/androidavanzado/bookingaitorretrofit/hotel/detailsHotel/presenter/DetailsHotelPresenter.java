@@ -5,7 +5,7 @@ import android.util.Log;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.contract.DetailsHotelContract;
 import com.androidavanzado.bookingaitorretrofit.hotel.detailsHotel.model.DetailsHotelModel;
-import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.model.HotelRepository;
+import com.androidavanzado.bookingaitorretrofit.data.local.HotelRepository;
 
 public class DetailsHotelPresenter implements DetailsHotelContract.Presenter {
     private static final String TAG = "DetailsHotelPresenter";

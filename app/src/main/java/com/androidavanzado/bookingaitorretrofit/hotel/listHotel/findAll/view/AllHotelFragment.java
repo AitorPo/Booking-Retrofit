@@ -119,7 +119,7 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
         hotelArrayList = HotelRoomDataBase.getInstance(context).getHotelDAO().getHotelsRoomDatabase();
 
         for (Hotel hotel : hotelArrayList){
-            Log.d(TAG, hotel.toString());
+            Log.d(TAG, "loadHotelsFromRoomDb" + hotel.toString());
         }
         adapter.setData(hotelArrayList);
     }
@@ -130,7 +130,7 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
         //pbProgress.setVisibility(View.GONE);
         crossfade();
         linearLayout.setVisibility(View.GONE);
-        adapter = new ListHotelAdapter(hoteles, getContext(), idHotel -> getActivity().getSupportFragmentManager()
+        adapter = new ListHotelAdapter((ArrayList<Hotel>) hotelArrayList, getContext(), idHotel -> getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_dashboard_fragment_container,
                         HotelDataFragment.newInstance(idHotel))
@@ -168,8 +168,6 @@ public class AllHotelFragment extends Fragment implements ListHotelContract.View
                     }
                 });
     }
-
-
 
     @Override
     public void onFailure(Throwable throwable) {
