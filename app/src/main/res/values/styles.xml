@@ -20,7 +20,7 @@
         <item name="android:windowEnterTransition">@android:transition/explode</item>
         <item name="android:windowExitTransition">@android:transition/explode</item>
         <!-- Millis -->
-        <item name="android:duration">1500</item>
+        <item name="android:duration">900</item>
 
         <!-- Customize your theme here. -->
     </style>

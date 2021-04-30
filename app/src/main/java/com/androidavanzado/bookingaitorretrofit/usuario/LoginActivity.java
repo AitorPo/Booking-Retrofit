@@ -1,5 +1,6 @@
 package com.androidavanzado.bookingaitorretrofit.usuario;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,9 +14,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.androidavanzado.bookingaitorretrofit.DashboardActivity;
 import com.androidavanzado.bookingaitorretrofit.LoginToDashboardLottieActivity;
 import com.androidavanzado.bookingaitorretrofit.R;
+import com.androidavanzado.bookingaitorretrofit.Splashscreen;
 import com.androidavanzado.bookingaitorretrofit.beans.Usuario;
+import com.androidavanzado.bookingaitorretrofit.utils.Util;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -39,18 +43,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        // Ocultamos el título de la App
+        getSupportActionBar().hide();
+
         usuario = new Usuario();
         presenter = new LoginPresenter(this);
 
         initComponents();
+        setCredentialsIfExist();
 
         btnLogin.setOnClickListener(v -> {
-            // if(login(etEmailValue, etPasswordValue)){
-            //      goToDashboard();
-            //      saveOnPreferences(etEmailValue, etPasswordValue();
-            // }
+            etEmailValue = etEmail.getText().toString();
+            etPasswordValue = etPassword.getText().toString();
+            saveOnSharedPreferences(etEmailValue, etPasswordValue);
 
-            if (etEmail.length() == 0 && etPassword.length() == 0) {
+
+            /*if (etEmail.length() == 0 && etPassword.length() == 0) {
                 textInputLayoutUser.setError("Error");
                 textInputLayoutPassword.setError("Error");
                 Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_LONG).show();
@@ -61,20 +69,20 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 textInputLayoutUser.setError("Formato de email inválido");
             }else if (etPassword.length() == 0) {
                 textInputLayoutPassword.setError("Rellena este campo");
-            }
-            etEmailValue = etEmail.getText().toString();
-            etPasswordValue = etPassword.getText().toString();
+            }*/
+            /*etEmailValue = etEmail.getText().toString();
+            etPasswordValue = etPassword.getText().toString();*/
             usuario.setEmail(etEmailValue);
             usuario.setPassword(etPasswordValue);
             presenter.doLoginPresenter(usuario);
         });
     }
 
-    private boolean login(String email, String password){
-        if (!validateEmail(email)){
+    private boolean login(Usuario usuario){
+        if (!validateEmail(usuario.getEmail())){
             // TODO settear errores en los ET
             return false;
-        } else if(!validatePassword(password)){
+        } else if(!validatePassword(usuario.getPassword())){
             // TODO settear errores en los ET
             return false;
         } else {
@@ -91,12 +99,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     private void goToDashboard(){
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this);
+
         Toast.makeText(this, "Hola de nuevo " + usuario.getEmail(), Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, LoginToDashboardLottieActivity.class);
-        //Flag para gestionar que no se pulse "atrás" y se vuelva al login.
-        // TODO comprobrobar si funciona igual que finish()
+        // Flag para gestionar que no se pulse "atrás" y se vuelva al login.
+        // Funciona igual que finish(): destruye la Activity anterior para no volver a ella pulsando "Atrás"
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 
     private void saveOnSharedPreferences(String email, String password){
@@ -109,10 +119,20 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         }
     }
 
-    public void initComponents() {
+    private void setCredentialsIfExist(){
+        String prefsEmail = Util.getUserMailPrefs(sharedPreferences);
+        String prefsPassword = Util.getUserPasswordPrefs(sharedPreferences);
+        if (!prefsEmail.isEmpty() && !prefsPassword.isEmpty()){
+            etEmail.setText(prefsEmail);
+            etPassword.setText(prefsPassword);
+        }
+    }
+
+   public void initComponents() {
         // Instanciamos el objeto de SharedPreferences para LEER las preferencias
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
 
+        aSwitch = findViewById(R.id.switchRemember);
         etEmail = findViewById(R.id.tvEmail);
         etPassword = findViewById(R.id.tvPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -122,9 +142,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void onSuccess(Usuario usuario) {
-        Toast.makeText(this, "Hola de nuevo " + usuario.getEmail(), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginToDashboardLottieActivity.class);
-        startActivity(intent);
+        if(login(usuario)){
+            goToDashboard();
+        }
     }
 
     @Override
