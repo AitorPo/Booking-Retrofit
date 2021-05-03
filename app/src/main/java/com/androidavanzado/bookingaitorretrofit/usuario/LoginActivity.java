@@ -102,9 +102,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this);
 
         Toast.makeText(this, "Hola de nuevo " + usuario.getEmail(), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(this, LoginToDashboardLottieActivity.class);
+        Intent intent = new Intent(LoginActivity.this, LoginToDashboardLottieActivity.class);
         // Flag para gestionar que no se pulse "atrás" y se vuelva al login.
         // Funciona igual que finish(): destruye la Activity anterior para no volver a ella pulsando "Atrás"
+        intent.putExtra("Email", usuario.getEmail());
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent, options.toBundle());
     }

@@ -8,7 +8,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginToDashboardLottieActivity extends AppCompatActivity {
-
+    private String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +16,8 @@ public class LoginToDashboardLottieActivity extends AppCompatActivity {
 
         // Ocultamos el título de la App
         getSupportActionBar().hide();
+
+
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -30,7 +32,9 @@ public class LoginToDashboardLottieActivity extends AppCompatActivity {
     private void transitions(){
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginToDashboardLottieActivity.this);
         Intent intent = new Intent(LoginToDashboardLottieActivity.this, DashboardActivity.class);
+        email = getIntent().getStringExtra("Email");
+        intent.putExtra("Email", email);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent, options.toBundle());
-        finish();
     }
 }

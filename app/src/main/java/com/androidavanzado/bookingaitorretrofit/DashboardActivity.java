@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiuda
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.HotelFilterFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.AllHotelFragment;
 import com.androidavanzado.bookingaitorretrofit.usuario.LoginActivity;
+import com.androidavanzado.bookingaitorretrofit.utils.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -24,6 +26,9 @@ public class DashboardActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private Toolbar toolbar;
+    private TextView tvUsername;
+    private String email;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
         Fragment f = null;
 
@@ -65,7 +70,6 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Ocultamos el título de la App
         getSupportActionBar().hide();
-
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -97,6 +101,8 @@ public class DashboardActivity extends AppCompatActivity {
         // ya que al ocultar la ActionBar de la app no nos aparecería dicho menú.
         toolbar = findViewById(R.id.activity_dashboard_tb);
         toolbar.inflateMenu(R.menu.logout_menu);
+        tvUsername = findViewById(R.id.activity_dashboard_tvUsername);
+        setToolbarEmail();
 
     }
 
@@ -104,21 +110,6 @@ public class DashboardActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.logout_menu, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menu_logout:
-                    logout();
-                return true;
-            case R.id.menu_forget_logout:
-                    removePreferences();
-                    logout();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private void logout(){
@@ -132,5 +123,13 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void removePreferences(){
         sharedPreferences.edit().clear().apply();
+    }
+
+    private void setToolbarEmail(){
+        email = getIntent().getStringExtra("Email");
+        if (Util.getUserMailPrefs(sharedPreferences).isEmpty())
+            tvUsername.setText(email);
+        else
+            tvUsername.setText(Util.getUserMailPrefs(sharedPreferences));
     }
 }

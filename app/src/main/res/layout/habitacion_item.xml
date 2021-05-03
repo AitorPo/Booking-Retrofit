@@ -5,8 +5,7 @@
     android:id="@+id/cardViewHabitacion"
 
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:layout_marginBottom="10dp"
+    android:layout_height="160dp"
     android:orientation="horizontal"
 
     app:cardCornerRadius="6dp"
@@ -17,116 +16,126 @@
     tools:ignore="ExtraText">
 
 
-    <ImageView
-        android:id="@+id/ivFotoHabitacion"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/ll_img_habitacion_list"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/ivFotoHabitacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            tools:srcCompat="@tools:sample/avatars"
+            />
+    </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_toEndOf="@id/ll_img_habitacion_list"
+         >
+         <RelativeLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_marginStart="30dp">
         <TextView
             android:id="@+id/tvPrecio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:background="@color/black_bg"
             android:text="1"
-            android:textColor="@color/white"
-            android:textSize="18sp"
+            android:layout_toEndOf="@id/tvPrecioString"
+            android:layout_below="@id/tvNCamas"
+            android:textColor="@color/black_bg"
+            android:layout_marginBottom="5dp"
+            android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvPrecioString"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/tvPrecioString"
-            app:layout_constraintTop_toTopOf="@+id/tvPrecioString"
-            app:layout_constraintVertical_bias="1.0" />
+
+            />
 
         <TextView
             android:id="@+id/tvCama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/black_bg"
             android:text=" Camas "
-            android:textAlignment="viewStart"
-            android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textColor="@color/black_bg"
+            android:layout_toEndOf="@id/tvNCamas"
+            android:layout_marginBottom="5dp"
+            android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvNCamas"
-            app:layout_constraintStart_toEndOf="@+id/tvNCamas"
-            app:layout_constraintTop_toTopOf="@+id/tvNCamas"
-            app:layout_constraintVertical_bias="0.0" />
+
+            />
 
         <TextView
             android:id="@+id/tvNCamas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="4dp"
-            android:background="@color/black_bg"
             android:text=" Camas: "
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/black_bg"
+            android:layout_marginBottom="5dp"
+            android:textSize="17sp"
+
+            />
 
         <TextView
             android:id="@+id/tvPrecioString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="88dp"
-            android:layout_marginBottom="4dp"
-            android:background="@color/black_bg"
             android:text=" Precio: "
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_below="@id/tvCama"
+            android:textColor="@color/black_bg"
+            android:layout_marginBottom="5dp"
+            android:textSize="17sp"
+
+            />
 
         <TextView
             android:id="@+id/tvNumeroHabitacionString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="76dp"
-            android:background="@color/black_bg"
             android:text=" Nº Habitación:  "
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_below="@id/tvPrecioString"
+            android:textColor="@color/black_bg"
+            android:layout_marginBottom="5dp"
+            android:textSize="17sp"
+
+            />
 
         <TextView
             android:id="@+id/tvNumeroHab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1"
-            android:textColor="@color/white"
-            android:background="@color/black_bg"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvNumeroHabitacionString"
-            app:layout_constraintStart_toEndOf="@+id/tvNumeroHabitacionString"
-            app:layout_constraintTop_toTopOf="@+id/tvNumeroHabitacionString" />
+            android:textColor="@color/black_bg"
+            android:layout_below="@id/tvPrecio"
+            android:layout_toEndOf="@id/tvNumeroHabitacionString"
+            android:layout_marginBottom="5dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+
+            />
 
         <TextView
             android:id="@+id/tvDisponible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="4dp"
-            android:textColor="@color/white"
-            android:background="@color/black_bg"
-            android:textSize="24sp"
+            android:textColor="@color/black_bg"
             android:text="Disponible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_below="@id/tvNumeroHabitacionString"
+            android:layout_marginBottom="5dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            />
+         </RelativeLayout>
+     </LinearLayout>
+
+    </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>
