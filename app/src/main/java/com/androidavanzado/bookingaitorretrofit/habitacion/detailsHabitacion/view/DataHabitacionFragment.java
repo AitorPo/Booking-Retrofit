@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +20,7 @@ import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.contract.DetailsHabitacionContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.presenter.DetailsHabitacionPresenter;
+import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view.ListHabitacionByHotelFragment;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,7 +50,9 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
     private LinearLayout linearLayout;
     private Button btnRetry;
 
-    private GoogleMap map;
+    private Toolbar toolbar;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     private int idHabitacion;
@@ -91,8 +95,10 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.habitacion_item_details, container, false);
 
-        detailConstraint = view.findViewById(R.id.detail_htabitacion_constraint);
-        detailConstraint.setVisibility(View.GONE);
+        //detailConstraint = view.findViewById(R.id.detail_habitacion_constraint);
+        //detailConstraint.setVisibility(View.GONE);
+
+        toolbar = view.findViewById(R.id.toolbarDetailsHabitacion);
 
         pbDetails = view.findViewById(R.id.pb_habitacion_detail);
         pbDetails.setVisibility(View.VISIBLE);
@@ -117,7 +123,7 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
 
     @Override
     public void onSuccess(Habitacion habitacion) {
-        detailConstraint.setVisibility(View.VISIBLE);
+        //detailConstraint.setVisibility(View.VISIBLE);
         pbDetails.setVisibility(View.GONE);
         linearLayout.setVisibility(View.GONE);
 
@@ -138,6 +144,17 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
             tvLink.setLinksClickable(false);
         }
         tvDescripcion.setText(habitacion.getDescripcion());
+        tvLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_dashboard_fragment_container,
+                                ListHabitacionByHotelFragment.newInstance(1))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     @Override

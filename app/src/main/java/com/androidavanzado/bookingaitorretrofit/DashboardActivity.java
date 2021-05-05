@@ -42,6 +42,10 @@ public class DashboardActivity extends AppCompatActivity {
                 Log.d("navigation_hotels", "Hoteles");
                 f = AllHotelFragment.newInstance(1);
                 break;
+            case R.id.navigation_reservas:
+                Log.d("navigation_reservas", "Reservas");
+                f = AllHotelFragment.newInstance(1);
+                break;
             case R.id.navigation_more:
                 Log.d("navigation_more", "Más");
                 f = HotelFilterFragment.newInstance(1);
