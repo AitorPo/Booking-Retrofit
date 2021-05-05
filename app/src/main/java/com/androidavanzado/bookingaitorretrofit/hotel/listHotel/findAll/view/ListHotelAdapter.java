@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androidavanzado.bookingaitorretrofit.BuildConfig;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import com.bumptech.glide.Glide;
@@ -18,7 +19,6 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_HOTEL_URL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
 public class ListHotelAdapter extends RecyclerView.Adapter<ListHotelAdapter.ViewHolder> {
@@ -48,7 +48,7 @@ public class ListHotelAdapter extends RecyclerView.Adapter<ListHotelAdapter.View
         holder.tvNombre.setText(holder.hotel.getNombre());
         holder.tvPuntuacion.setText(String.valueOf(holder.hotel.getPuntuacion()));
 
-        Glide.with(context).load(BOOKING_API_PHOTO_HOTEL_URL + holder.hotel.getFoto() + IMG_FORMAT)
+        Glide.with(context).load(BuildConfig.BOOKING_API_PHOTO_HOTEL_URL + holder.hotel.getFoto() + IMG_FORMAT)
                 .clone()
                 .fitCenter()
                 .centerCrop()

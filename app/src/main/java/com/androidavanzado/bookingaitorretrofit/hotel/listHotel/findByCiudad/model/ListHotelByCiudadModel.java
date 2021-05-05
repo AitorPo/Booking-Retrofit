@@ -3,6 +3,7 @@ package com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.mo
 import android.util.Log;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
+import com.androidavanzado.bookingaitorretrofit.data.local.HotelRepository;
 import com.androidavanzado.bookingaitorretrofit.data.service.ApiCLient;
 import com.androidavanzado.bookingaitorretrofit.data.service.ApiService;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByCiudad.contract.ListHotelByCiudadContract;
@@ -33,6 +34,7 @@ public class ListHotelByCiudadModel implements ListHotelByCiudadContract.Model {
         params.put(ACTION, HOTEL);
         params.put(QUERY, FIND_BY_CIUDAD);
         params.put(ID, String.valueOf(idCiudad));
+
 
         Call<ArrayList<Hotel>> call = apiService.getHotelesByCiudad(params);
         call.enqueue(new Callback<ArrayList<Hotel>>() {

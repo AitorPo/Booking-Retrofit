@@ -47,6 +47,7 @@ public class DetailsHotelModel implements DetailsHotelContract.Model {
                 Hotel hotelRoomDataBase = repository.getHotelDetailsRoom(idHotel);
                 Log.d(TAG, hotelRoomDataBase.toString());
                 Log.d(TAG, "Detalles cargados");
+                Log.d(TAG, hotel.toString());
                 // Cargamos los datos del hotel obteniéndolos de la BD local de Room
                 onDetailsHotelListener.onResolve(hotelRoomDataBase);
             }

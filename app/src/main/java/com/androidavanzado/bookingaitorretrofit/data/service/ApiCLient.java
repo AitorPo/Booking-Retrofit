@@ -1,9 +1,12 @@
 package com.androidavanzado.bookingaitorretrofit.data.service;
 
+import android.os.Build;
+
+import com.androidavanzado.bookingaitorretrofit.BuildConfig;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_BASE_URL;
 
 public class ApiCLient {
     private static Retrofit retrofit = null;
@@ -11,7 +14,7 @@ public class ApiCLient {
     public static Retrofit buildClient() {
         if (retrofit == null)
             retrofit = new Retrofit.Builder()
-                    .baseUrl(BOOKING_API_BASE_URL)
+                    .baseUrl(BuildConfig.BOOKING_API_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

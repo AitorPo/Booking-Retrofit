@@ -15,7 +15,7 @@ public class LoginToDashboardLottieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_to_dashboard_lottie);
 
         // Ocultamos el título de la App
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
 
 

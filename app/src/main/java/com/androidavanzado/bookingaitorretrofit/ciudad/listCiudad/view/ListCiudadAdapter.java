@@ -11,13 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androidavanzado.bookingaitorretrofit.BuildConfig;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_CIUDAD_URL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
 public class ListCiudadAdapter extends RecyclerView.Adapter<ListCiudadAdapter.ViewHolder> {
@@ -46,7 +46,7 @@ public class ListCiudadAdapter extends RecyclerView.Adapter<ListCiudadAdapter.Vi
         holder.bind(holder.ciudad, onCardClickListener);
         holder.tvCiudadNombre.setText(holder.ciudad.getNombre());
 
-        Glide.with(context).load(BOOKING_API_PHOTO_CIUDAD_URL + ciudades.get(position).getImagen() + IMG_FORMAT)
+        Glide.with(context).load(BuildConfig.BOOKING_API_PHOTO_CIUDAD_URL + ciudades.get(position).getImagen() + IMG_FORMAT)
                 .centerCrop()
                 .into(holder.ivImagen);
     }

@@ -11,7 +11,7 @@ import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Hotel.class}, version = 8, exportSchema = false)
+@Database(entities = {Hotel.class}, version = 13, exportSchema = false)
 public abstract class HotelRoomDataBase extends RoomDatabase {
     public abstract HotelDAO getHotelDAO();
 
@@ -24,7 +24,7 @@ public abstract class HotelRoomDataBase extends RoomDatabase {
             synchronized (HotelRoomDataBase.class){
                 if (INSTANCE == null){
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            HotelRoomDataBase.class, "hotel_db")
+                            HotelRoomDataBase.class, "hotel_database")
                             .allowMainThreadQueries()
                             .fallbackToDestructiveMigration()
                             .build();

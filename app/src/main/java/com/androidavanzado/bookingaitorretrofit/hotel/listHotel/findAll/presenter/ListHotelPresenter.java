@@ -28,17 +28,14 @@ public class ListHotelPresenter implements ListHotelContract.Presenter {
        listHotelModel.getHotelesLH(new ListHotelContract.Model.OnListHotelListener() {
             @Override
             public void onResolve(ArrayList<Hotel> hoteles) {
-                AsyncTask.execute(new Runnable() {
-                    @Override
-                    public void run() {
+
                         for (Hotel hotel : hoteles) {
                             hotelRepository.insertAll(hotel);
                             Log.d(TAG, hotel.toString());
                         }
-                    }
-                });
-                List<Hotel> hotelFromRoom = hotelRepository.getHotelsRoomDatabase();
-                view.onSuccess((ArrayList<Hotel>) hotelFromRoom);
+
+                //List<Hotel> hotelFromRoom = hotelRepository.getHotelsRoomDatabase();
+                view.onSuccess((ArrayList<Hotel>) hoteles);
             }
 
             @Override

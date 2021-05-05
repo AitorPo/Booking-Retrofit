@@ -24,7 +24,7 @@ public class Splashscreen extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
 
         // Ocultamos el título de la App
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

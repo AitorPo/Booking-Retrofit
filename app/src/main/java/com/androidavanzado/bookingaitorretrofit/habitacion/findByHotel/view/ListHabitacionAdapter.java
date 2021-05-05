@@ -1,6 +1,7 @@
 package com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androidavanzado.bookingaitorretrofit.BuildConfig;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_HABITACION_URL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.COIN;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
@@ -54,7 +55,7 @@ public class ListHabitacionAdapter extends RecyclerView.Adapter<ListHabitacionAd
             holder.tvDisponible.setText(" DISPONIBLE ");
         }
 
-        Glide.with(context).load(BOOKING_API_PHOTO_HABITACION_URL + habitaciones.get(position).getFoto() + IMG_FORMAT)
+        Glide.with(context).load(BuildConfig.BOOKING_API_PHOTO_HABITACION_URL + habitaciones.get(position).getFoto() + IMG_FORMAT)
                 .clone()
                 .centerCrop()
                 .into(holder.ivFotoHabitacion);

@@ -25,8 +25,9 @@ public class DetailsHotelPresenter implements DetailsHotelContract.Presenter {
             @Override
             public void onResolve(Hotel hotel) {
                 Hotel hotelRoomDataBase = repository.getHotelDetailsRoom(idHotel);
-                Log.d(TAG, hotelRoomDataBase.toString());
-                view.onSuccess(hotelRoomDataBase);
+                //Log.d(TAG, hotelRoomDataBase.toString());
+                //view.onSuccess(hotelRoomDataBase);
+                view.onSuccess(hotel);
             }
 
             @Override

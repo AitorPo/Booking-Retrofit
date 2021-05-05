@@ -17,7 +17,7 @@ public class Hotel {
 
     private int numReservas;
 
-    private int idCiudad;
+    private int ciudad;
 
     private String nombre;
 
@@ -39,6 +39,7 @@ public class Hotel {
     public Hotel() {
     }
 
+
     @Override
     public String toString() {
         return "Hotel{" +
@@ -49,7 +50,7 @@ public class Hotel {
                 ", nombre='" + nombre + '\'' +
                 ", foto='" + foto + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", ciudad='" + idCiudad + '\'' +
+                ", ciudad='" + ciudad + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", destacado=" + destacado +
                 '}';
@@ -100,12 +101,12 @@ public class Hotel {
         this.direccion = direccion;
     }
 
-    public int getIdCiudad() {
-        return idCiudad;
+    public int getCiudad() {
+        return ciudad;
     }
 
-    public void setIdCiudad(int idCiudad) {
-        this.idCiudad = idCiudad;
+    public void setCiudad(int ciudad) {
+        this.ciudad = ciudad;
     }
 
     public String getDescripcion() {

@@ -14,13 +14,18 @@ import android.widget.Toast;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.androidavanzado.bookingaitorretrofit.BuildConfig;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.contract.DetailsHabitacionContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.presenter.DetailsHabitacionPresenter;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import static com.androidavanzado.bookingaitorretrofit.utils.Constants.BOOKING_API_PHOTO_HABITACION_URL;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
 //import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
@@ -42,6 +47,8 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
     private ProgressBar pbDetails;
     private LinearLayout linearLayout;
     private Button btnRetry;
+
+    private GoogleMap map;
 
     // TODO: Rename parameter arguments, choose names that match
     private int idHabitacion;
@@ -115,7 +122,7 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         linearLayout.setVisibility(View.GONE);
 
         tvPuntuacionCount.setText(String.valueOf(habitacion.getNumHabitacion()));
-        Glide.with(this).load(BOOKING_API_PHOTO_HABITACION_URL + habitacion.getFoto() + IMG_FORMAT)
+        Glide.with(this).load(BuildConfig.BOOKING_API_PHOTO_HABITACION_URL + habitacion.getFoto() + IMG_FORMAT)
                 .centerInside()
                 .centerCrop()
                 .into(ivHotel);
@@ -151,4 +158,6 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         });
         Toast.makeText(getActivity(), R.string.internet_error, Toast.LENGTH_LONG).show();
     }
+
+
 }

@@ -14,7 +14,6 @@
             android:id="@+id/activity_dashboard_app_bar_tb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.PopupOverlay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/white"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
+                >
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/activity_dashboard_tb_circleIvUser"

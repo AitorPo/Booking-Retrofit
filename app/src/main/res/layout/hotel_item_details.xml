@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
 
     <!-- LAYOUT ERROR -->
@@ -37,150 +38,55 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/detail_hotel_constraint"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        android:fitsSystemWindows="true"
+        >
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:statusBarScrim="@color/white"
+        app:contentScrim="@color/white"
+        app:expandedTitleMarginEnd="64dp"
+        app:expandedTitleMarginStart="48dp"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
 
         <ImageView
             android:id="@+id/ivHotel"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_collapseMode="parallax"
+            android:minHeight="50dp"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/tvDireccionNombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:text="Dirección: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPuntos" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDetailsHotel"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:textAlignment="center"
 
-        <TextView
-            android:id="@+id/tvNumHabitacionsCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Habitaciones count"
-            app:layout_constraintBottom_toBottomOf="@+id/tvNumHabitaciones"
-            app:layout_constraintStart_toEndOf="@+id/tvNumHabitaciones"
-            app:layout_constraintTop_toTopOf="@+id/tvNumHabitaciones"
-            app:layout_constraintVertical_bias="0.0" />
+            android:titleTextColor="@android:color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:subtitleTextColor="@color/white"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:titleTextColor="@android:color/white"
+            tools:titleTextColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/tvPuntuacionCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:text="Puntuacion count"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvPuntos"
-            app:layout_constraintStart_toEndOf="@+id/tvPuntos"
-            app:layout_constraintTop_toTopOf="@+id/tvPuntos" />
 
-        <TextView
-            android:id="@+id/tvNumReservas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:text="Nº de reservas: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDireccion" />
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:id="@+id/tvNumHabitaciones"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:text="Nº de habitaciones: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNumReservas" />
+    <include layout="@layout/hotel_details_content"/>
 
-        <TextView
-            android:id="@+id/tvDescripcion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:scrollbars="none"
-            android:text="Descripción"
-            android:textAlignment="viewStart"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNumHabitaciones"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/tvPuntos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:text="Puntos:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
-
-        <TextView
-            android:id="@+id/tvDireccion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:clickable="false"
-            android:text="Nombre de la calle"
-            app:layout_constraintStart_toEndOf="@+id/tvDireccionNombre"
-            app:layout_constraintTop_toTopOf="@+id/tvDireccionNombre" />
-
-        <TextView
-            android:id="@+id/tvReservasCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reservas count"
-            app:layout_constraintBottom_toBottomOf="@+id/tvNumReservas"
-            app:layout_constraintStart_toEndOf="@+id/tvNumReservas"
-            app:layout_constraintTop_toTopOf="@+id/tvNumReservas"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/tvNombre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:autoLink="none"
-            android:text="Nombre del hotel"
-            android:textAlignment="viewStart"
-            android:textSize="24sp"
-            android:typeface="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLink" />
-
-        <TextView
-            android:id="@+id/tvLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:clickable="true"
-            android:linksClickable="true"
-            android:onClick="verTodasHabitaciones"
-            android:text="Ver todas las habitaciones"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.455"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivHotel" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

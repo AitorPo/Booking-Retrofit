@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.androidavanzado.bookingaitorretrofit"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -18,6 +18,18 @@ android {
 
 
     buildTypes {
+        def STRING = "String"
+        def INT = "int"
+        def BOOLEAN = "boolean"
+
+
+
+        debug {
+            buildConfigField STRING, "BOOKING_API_BASE_URL", '"http://192.168.1.68:8080/"'
+            buildConfigField STRING, "BOOKING_API_PHOTO_HOTEL_URL", '"http://192.168.1.68:8080/BookingAitor/imagenes/hotel/"'
+            buildConfigField STRING, "BOOKING_API_PHOTO_HABITACION_URL", '"http://192.168.1.68:8080/BookingAitor/imagenes/habitacion/"'
+            buildConfigField STRING, "BOOKING_API_PHOTO_CIUDAD_URL", '"http://192.168.1.68:8080/BookingAitor/imagenes/ciudad/"'
+        }
         release {
             minifyEnabled true
             shrinkResources true
@@ -35,6 +47,7 @@ dependencies {
     def room_version = "2.2.5"
     def lottieVersion = "3.7.0"
 
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

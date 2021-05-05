@@ -69,7 +69,7 @@ public class DashboardActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // Ocultamos el título de la App
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

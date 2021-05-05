@@ -1,13 +1,7 @@
 package com.androidavanzado.bookingaitorretrofit.utils;
 
 public class Constants {
-//192.168.1.68
-    //10.0.2.2
 
-    public static final String BOOKING_API_BASE_URL = "http://192.168.1.68:8080/";
-    public static final String BOOKING_API_PHOTO_HOTEL_URL = "http://192.168.1.68:8080/BookingAitor/imagenes/hotel/";
-    public static final String BOOKING_API_PHOTO_HABITACION_URL = "http://192.168.1.68:8080/BookingAitor/imagenes/habitacion/";
-    public static final String BOOKING_API_PHOTO_CIUDAD_URL = "http://192.168.1.68:8080/BookingAitor/imagenes/ciudad/";
     public static final String COIN = " €";
     public static final String IMG_FORMAT = ".jpg";
     public static final String ACTION = "ACTION";
