@@ -3,6 +3,7 @@ package com.androidavanzado.bookingaitorretrofit.data.service;
 import com.androidavanzado.bookingaitorretrofit.beans.Ciudad;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
 import com.androidavanzado.bookingaitorretrofit.beans.Hotel;
+import com.androidavanzado.bookingaitorretrofit.beans.Reserva;
 import com.androidavanzado.bookingaitorretrofit.beans.Usuario;
 
 import java.util.ArrayList;
@@ -10,7 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.FieldMap;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
 public interface ApiService {
@@ -67,5 +70,7 @@ public interface ApiService {
     Call<ArrayList<Usuario>> login(
             @QueryMap Map<String, String> params);
 
-
+    @POST("BookingAitor/Controller")
+    Call<Void> reservar(
+        @QueryMap Map<String, String> params);
 }

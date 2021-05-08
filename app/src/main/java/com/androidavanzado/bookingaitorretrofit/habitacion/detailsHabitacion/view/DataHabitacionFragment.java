@@ -1,6 +1,8 @@
 package com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +15,30 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 
 import com.androidavanzado.bookingaitorretrofit.BuildConfig;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
+import com.androidavanzado.bookingaitorretrofit.beans.Reserva;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.contract.DetailsHabitacionContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.presenter.DetailsHabitacionPresenter;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view.ListHabitacionByHotelFragment;
+import com.androidavanzado.bookingaitorretrofit.habitacion.reservar.ReservarFragment;
 import com.bumptech.glide.Glide;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.EU_DATE_FORMAT;
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_HAB;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
 //import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
@@ -42,13 +53,17 @@ import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findByReservas.v
 public class DataHabitacionFragment extends Fragment implements DetailsHabitacionContract.View {
     private DetailsHabitacionPresenter presenter;
     private ImageView ivHotel;
-    private TextView tvPuntuacionCount, tvLink, tvNumeroHab, tvDireccion,
+    private TextView tvPuntuacionCount,tvFechas, tvDireccion,
             tvReservasCount, tvNumHabitacionsCount, tvDescripcion;
 
     private ConstraintLayout detailConstraint;
     private ProgressBar pbDetails;
     private LinearLayout linearLayout;
-    private Button btnRetry;
+    private Button btnRetry, tvLink, btnSave;
+    private MaterialCardView materialCardViewReserva, materialCardViewSaveReserva;
+
+    private MaterialDatePicker.Builder<Pair<Long, Long>> materialDateBuilder;
+    private MaterialDatePicker materialDatePicker;
 
     private Toolbar toolbar;
 
@@ -56,6 +71,8 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
 
     // TODO: Rename parameter arguments, choose names that match
     private int idHabitacion;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "idHabitacion";
     private static final String ARG_PARAM2 = "nombre";
@@ -99,6 +116,24 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         //detailConstraint.setVisibility(View.GONE);
 
         toolbar = view.findViewById(R.id.toolbarDetailsHabitacion);
+        materialCardViewSaveReserva = view.findViewById(R.id.material_cv_btn_guardar_reserva);
+        materialCardViewSaveReserva.setVisibility(View.GONE);
+
+        materialCardViewReserva = view.findViewById(R.id.material_cv_btn_reservar);
+        materialCardViewReserva.setVisibility(View.VISIBLE);
+
+
+        /*dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
+                .setTitleText("Selecciona fechas")
+                .setSelection(
+                        Pair.create(MaterialDatePicker.thisMonthInUtcMilliseconds(),
+                                MaterialDatePicker.todayInUtcMilliseconds())
+                ).build();*/
+
+        materialDateBuilder = MaterialDatePicker.Builder.dateRangePicker();
+        materialDateBuilder.setTitleText("Selecciona fechas");
+
+        materialDatePicker = materialDateBuilder.build();
 
         pbDetails = view.findViewById(R.id.pb_habitacion_detail);
         pbDetails.setVisibility(View.VISIBLE);
@@ -115,6 +150,8 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         tvDescripcion = view.findViewById(R.id.tvDescripcion);
         ivHotel = view.findViewById(R.id.ivHotel);
         tvLink = view.findViewById(R.id.tvLink);
+        btnSave = view.findViewById(R.id.btnSave);
+        tvFechas = view.findViewById(R.id.tvFechas);
 
         presenter.getDetailsHabitacion(idHabitacion);
 
@@ -137,24 +174,73 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         tvReservasCount.setText(String.valueOf(habitacion.getPrecio()));
         if (habitacion.isOcupada()) {
             tvNumHabitacionsCount.setText(" No ");
-            tvLink.setVisibility(View.INVISIBLE);
+            tvLink.setEnabled(false);
         } else {
             tvNumHabitacionsCount.setText(" Sí ");
-            tvLink.setVisibility(View.VISIBLE);
-            tvLink.setLinksClickable(false);
+            tvLink.setEnabled(true);
         }
         tvDescripcion.setText(habitacion.getDescripcion());
         tvLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager()
+                /*getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.activity_dashboard_fragment_container,
                                 ListHabitacionByHotelFragment.newInstance(1))
                         .addToBackStack(null)
-                        .commit();
+                        .commit();*/
+                reservar();
+
             }
         });
+    }
+
+    @SuppressLint({"LongLogTag", "SetTextI18n"})
+    private void reservar(){
+        materialDatePicker.show(getActivity().getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
+
+        DateTimeFormatter format = DateTimeFormatter.ofPattern(EU_DATE_FORMAT);
+        materialDatePicker.addOnPositiveButtonClickListener((MaterialPickerOnPositiveButtonClickListener<Pair<Long, Long>>) selection -> {
+            Log.d(TAG, "onPositiveButtonClick: " + materialDatePicker.getHeaderText());
+            Long in = selection.first;
+            Long out = selection.second;
+            Log.d(TAG, "in " + in);
+            Log.d(TAG, "out " + out);
+            checkIn = Instant.ofEpochMilli(in).atZone(ZoneId.systemDefault()).toLocalDate();
+            checkOut = Instant.ofEpochMilli(out).atZone(ZoneId.systemDefault()).toLocalDate();
+            Long epoc = checkIn.toEpochDay();
+            Log.d(TAG, "in - LocalDate " + checkIn);
+            Log.d(TAG, "out - LocalDate " + checkOut);
+            Log.d(TAG, "in - epoc " + epoc);
+            materialCardViewReserva.setVisibility(View.GONE);
+            materialCardViewSaveReserva.setVisibility(View.VISIBLE);
+            tvFechas.setText(checkIn.format(format) + " - " + checkOut.format(format));
+
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveReserva();
+            }
+        });
+    }
+
+    private void saveReserva(){
+        Bundle bundle = new Bundle();
+        bundle.putString("CHECK_IN", checkIn.toString());
+        bundle.putString("CHECK_OUT", checkOut.toString());
+        bundle.putInt(ID_HAB, idHabitacion);
+
+        ReservarFragment reservarFragment = ReservarFragment.newInstance(bundle);
+        reservarFragment.setArguments(bundle);
+
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_dashboard_fragment_container,
+                        reservarFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

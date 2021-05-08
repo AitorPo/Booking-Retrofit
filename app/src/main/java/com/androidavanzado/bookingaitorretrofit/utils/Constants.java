@@ -3,13 +3,16 @@ package com.androidavanzado.bookingaitorretrofit.utils;
 public class Constants {
 
     public static final String COIN = " €";
+    public static final String EU_DATE_FORMAT = "dd-MM-yyyy";
     public static final String IMG_FORMAT = ".jpg";
     public static final String ACTION = "ACTION";
+    public static final String RESERVA = "RESERVA";
     public static final String EMAIL = "EMAIL";
     public static final String USUARIO = "USUARIO";
     public static final String LOGIN = "LOGIN";
     public static final String PASSWORD = "PASSWORD";
     public static final String QUERY = "QUERY";
+    public static final String ADD = "ADD";
     public static final String HOTEL = "HOTEL";
     public static final String CIUDAD = "CIUDAD";
     public static final String HABITACION = "HABITACION";
@@ -24,6 +27,9 @@ public class Constants {
     public static final String RANKING_RESERVAS = "RANKING_RESERVAS";
     public static final String ID = "ID";
     public static final String ID_HOTEL = "ID_HOTEL";
+    public static final String ID_HAB = "ID_HAB";
+    public static final String IN = "IN";
+    public static final String OUT = "OUT";
     public static final String HOTEL_ID = "HOTEL_ID";
     public static final String HABITACION_ID = "HABITACION_ID";
 }

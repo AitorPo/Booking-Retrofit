@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         setContentView(R.layout.login);
 
         // Ocultamos el título de la App
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         usuario = new Usuario();
         presenter = new LoginPresenter(this);
