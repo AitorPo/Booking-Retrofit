@@ -24,6 +24,9 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_USUARIO;
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.USUARIO;
+
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
     private static final String TAG = "LoginActivity";
     private TextInputLayout textInputLayoutUser;
@@ -36,7 +39,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     // Obtejos para gestionar las SharedPreferences
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private Switch aSwitch;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +60,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         btnLogin.setOnClickListener(v -> {
             etEmailValue = etEmail.getText().toString();
             etPasswordValue = etPassword.getText().toString();
-            saveOnSharedPreferences(etEmailValue, etPasswordValue);
-
 
             /*if (etEmail.length() == 0 && etPassword.length() == 0) {
                 textInputLayoutUser.setError("Error");
@@ -98,24 +101,27 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         return password.length() >= 3;
     }
 
-    private void goToDashboard(){
+    private void goToDashboard(Usuario usuario){
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this);
 
         Toast.makeText(this, "Hola de nuevo " + usuario.getEmail(), Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(LoginActivity.this, LoginToDashboardLottieActivity.class);
+        intent = new Intent(LoginActivity.this, LoginToDashboardLottieActivity.class);
         // Flag para gestionar que no se pulse "atrás" y se vuelva al login.
         // Funciona igual que finish(): destruye la Activity anterior para no volver a ella pulsando "Atrás"
         intent.putExtra("Email", usuario.getEmail());
+        intent.putExtra(ID_USUARIO, usuario.getId());
+        Log.d(TAG, "goToDashboard: " + usuario.getId());
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent, options.toBundle());
     }
 
-    private void saveOnSharedPreferences(String email, String password){
+    private void saveOnSharedPreferences(String email, String password, int id){
         if (aSwitch.isChecked()){
             // Creamos un editor para AÑADIR información a las SharedPreferences
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+            //SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("Email", email);
             editor.putString("Password", password);
+            editor.putInt("id", id);
             editor.apply();
         }
     }
@@ -133,6 +139,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         // Instanciamos el objeto de SharedPreferences para LEER las preferencias
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
 
+        editor = sharedPreferences.edit();
+
         aSwitch = findViewById(R.id.switchRemember);
         etEmail = findViewById(R.id.tvEmail);
         etPassword = findViewById(R.id.tvPassword);
@@ -143,8 +151,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void onSuccess(Usuario usuario) {
+        saveOnSharedPreferences(usuario.getEmail(), usuario.getPassword(), usuario.getId());
+
         if(login(usuario)){
-            goToDashboard();
+            goToDashboard(usuario);
         }
     }
 

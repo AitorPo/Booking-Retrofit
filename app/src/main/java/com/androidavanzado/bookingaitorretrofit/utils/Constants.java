@@ -28,6 +28,7 @@ public class Constants {
     public static final String ID = "ID";
     public static final String ID_HOTEL = "ID_HOTEL";
     public static final String ID_HAB = "ID_HAB";
+    public static final String ID_USUARIO = "ID_USUARIO";
     public static final String IN = "IN";
     public static final String OUT = "OUT";
     public static final String HOTEL_ID = "HOTEL_ID";

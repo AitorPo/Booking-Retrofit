@@ -1,5 +1,6 @@
 package com.androidavanzado.bookingaitorretrofit.habitacion.reservar;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,7 +23,9 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_HAB;
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_USUARIO;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +41,8 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
     private static final String ARG_PARAM3 = "idHabitacion";
     private static final String ARG_PARAM4 = "in";
     private static final String ARG_PARAM5 = "out";
+
+    private SharedPreferences sharedPreferences;
 
 
     // TODO: Rename and change types of parameters
@@ -58,18 +63,7 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
-    public static ReservarFragment newInstance(Bundle extras) {
-        ReservarFragment fragment = new ReservarFragment();
-        Bundle args = new Bundle();
-        //args.putInt(ARG_PARAM1, reserva.getIdUsuario());
-        //args.putInt(ARG_PARAM2, extras.getInt("CHECK_IN"));
-        //args.putInt(ARG_PARAM3, reserva.getIdHabitacion());
-        args.putLong(ARG_PARAM4, extras.getLong("CHECK_IN"));
-        args.putLong(ARG_PARAM5, extras.getLong("CHECK_OUT"));
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,10 +73,16 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
         if (getArguments() != null) {
             //idReserva = getArguments().getInt(ARG_PARAM1);
             idUsuario = getArguments().getInt(ARG_PARAM2);
-            idHabitacion = getArguments().getInt(ARG_PARAM3);
-            in = getArguments().getLong(ARG_PARAM4);
-            out = getArguments().getLong(ARG_PARAM5);
         }
+    }
+
+    // TODO: Rename and change types and number of parameters
+    public static ReservarFragment newInstance(int idUsuario) {
+        ReservarFragment fragment = new ReservarFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_PARAM2, idUsuario);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -102,6 +102,7 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
         Bundle extras = this.getArguments();
         String inDate = extras.getString("CHECK_IN");
         String outDate = extras.getString("CHECK_OUT");
+        int userId = extras.getInt(ID_USUARIO);
 
 
         java.util.Date dateIn = null;
@@ -124,7 +125,7 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
 
         int idHab = extras.getInt(ID_HAB);
         r= new Reserva();
-        r.setIdUsuario(idUsuario);
+        r.setIdUsuario(userId);
         r.setIdHabitacion(idHab);
         r.setIn(sqlDateIn);
         r.setOut(sqlDateOut);

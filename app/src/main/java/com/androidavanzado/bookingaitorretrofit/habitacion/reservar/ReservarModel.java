@@ -32,7 +32,7 @@ public class ReservarModel implements ReservarContract.Model{
         HashMap<String, String> params = new HashMap<>();
         params.put(ACTION, RESERVA);
         params.put(QUERY, ADD);
-        params.put(ID, String.valueOf(1));
+        params.put(ID, String.valueOf(reserva.getIdUsuario()));
         params.put(ID_HAB, String.valueOf(reserva.getIdHabitacion()));
         params.put(IN, String.valueOf(reserva.getIn()));
         params.put(OUT, String.valueOf(reserva.getOut()));
@@ -41,9 +41,13 @@ public class ReservarModel implements ReservarContract.Model{
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+
                 String r = "Reserva realizada";
                 Log.d(TAG, r);
-                onReservaListener.onResolve(r);
+                Log.d(TAG, String.valueOf(response.code()));
+                Log.d(TAG, String.valueOf(response.headers()));
+                if(response.isSuccessful())
+                    onReservaListener.onResolve(r);
             }
 
             @Override

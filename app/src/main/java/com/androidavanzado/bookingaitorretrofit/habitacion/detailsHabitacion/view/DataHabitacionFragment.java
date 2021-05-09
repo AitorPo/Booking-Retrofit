@@ -1,6 +1,7 @@
 package com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.view;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.con
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.presenter.DetailsHabitacionPresenter;
 import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view.ListHabitacionByHotelFragment;
 import com.androidavanzado.bookingaitorretrofit.habitacion.reservar.ReservarFragment;
+import com.androidavanzado.bookingaitorretrofit.utils.Util;
 import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -37,8 +39,11 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.androidavanzado.bookingaitorretrofit.DashboardActivity.idUsuario;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.EU_DATE_FORMAT;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_HAB;
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_USUARIO;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.IMG_FORMAT;
 
 //import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.findAll.view.ListCiudadActivity;
@@ -68,7 +73,6 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
     private Toolbar toolbar;
 
 
-
     // TODO: Rename parameter arguments, choose names that match
     private int idHabitacion;
     private LocalDate checkIn;
@@ -85,6 +89,7 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
     private static final String ARG_PARAM9 = "link";
 
     private static final String TAG = "DetailsHabitacionFragment";
+    private SharedPreferences sharedPreferences;
 
     public DataHabitacionFragment() {
 
@@ -94,6 +99,8 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new DetailsHabitacionPresenter(this);
+        sharedPreferences = this.getActivity().getSharedPreferences("Preferences", MODE_PRIVATE);
+
         if (getArguments() != null) {
             idHabitacion = getArguments().getInt(ARG_PARAM1);
         }
@@ -114,6 +121,7 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
 
         //detailConstraint = view.findViewById(R.id.detail_habitacion_constraint);
         //detailConstraint.setVisibility(View.GONE);
+        sharedPreferences = this.getActivity().getSharedPreferences("Preferences", MODE_PRIVATE);
 
         toolbar = view.findViewById(R.id.toolbarDetailsHabitacion);
         materialCardViewSaveReserva = view.findViewById(R.id.material_cv_btn_guardar_reserva);
@@ -227,12 +235,17 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
     }
 
     private void saveReserva(){
+        int idUsuario = Util.getUserIntPrefs(sharedPreferences);
+        Log.d(TAG, "saveReserva: " + idUsuario);
+
         Bundle bundle = new Bundle();
         bundle.putString("CHECK_IN", checkIn.toString());
         bundle.putString("CHECK_OUT", checkOut.toString());
         bundle.putInt(ID_HAB, idHabitacion);
+        bundle.putInt(ID_USUARIO, idUsuario);
 
-        ReservarFragment reservarFragment = ReservarFragment.newInstance(bundle);
+
+        ReservarFragment reservarFragment = ReservarFragment.newInstance(idUsuario);
         reservarFragment.setArguments(bundle);
 
         getActivity().getSupportFragmentManager()

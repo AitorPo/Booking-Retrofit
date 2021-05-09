@@ -21,13 +21,17 @@ import com.androidavanzado.bookingaitorretrofit.usuario.LoginActivity;
 import com.androidavanzado.bookingaitorretrofit.utils.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_USUARIO;
+
 public class DashboardActivity extends AppCompatActivity {
     private static final String TAG = "DashboardActivity";
 
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private Toolbar toolbar;
     private TextView tvUsername;
     private String email;
+    public static int idUsuario;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = item -> {
         Fragment f = null;
@@ -67,8 +71,13 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        initComponents();
 
+        Bundle extras = new Bundle();
+        extras.putInt(ID_USUARIO, idUsuario);
+        initComponents();
+        String em = Util.getUserMailPrefs(sharedPreferences);
+        Log.d(TAG, "onCreate: " + idUsuario);
+        Log.d(TAG, "onCreate: " + em);
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bar_dashboard);
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -100,7 +109,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void initComponents(){
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
-
+        idUsuario = Util.getUserIntPrefs(sharedPreferences);
         // Seteamos el menú de "Log out" dentro de la Toolbar "personalizada" de nuestro layout
         // ya que al ocultar la ActionBar de la app no nos aparecería dicho menú.
         toolbar = findViewById(R.id.activity_dashboard_tb);
