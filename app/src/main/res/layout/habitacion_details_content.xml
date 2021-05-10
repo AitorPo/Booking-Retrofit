@@ -17,6 +17,8 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:cardCornerRadius="6dp"
             app:cardElevation="6dp"
             android:focusable="true"
@@ -27,49 +29,13 @@
                 android:layout_height="match_parent"
                 android:padding="10dp">
 
-                <LinearLayout
-                    android:id="@+id/ll_rating_and_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="3"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvDireccionNombre"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Nº de camas"
-                        android:textAlignment="center"
-                        />
-
-                    <TextView
-                        android:id="@+id/tvPuntos"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Nº de habitación"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        />
-
-                    <TextView
-                        android:id="@+id/tvNumReservas"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Precio"
-                        android:textAlignment="center"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
+               <LinearLayout
                     android:id="@+id/ll_rating_and_date_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="3"
-                    android:layout_below="@id/ll_rating_and_date">
+                    >
 
                     <TextView
                         android:id="@+id/tvDireccion"
@@ -78,6 +44,7 @@
                         android:layout_weight="1"
                         android:text=" numCamas "
                         android:textAlignment="center"
+                        app:drawableTopCompat="@drawable/ic_signo_de_hotel"
                         />
 
                     <TextView
@@ -86,7 +53,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text=" numHabitacion "
-                        android:textAlignment="center"/>
+                        android:textAlignment="center"
+                        android:drawableTop="@drawable/ic_room_key"/>
 
                     <TextView
                         android:id="@+id/tvReservasCount"
@@ -95,6 +63,7 @@
                         android:layout_weight="1"
                         android:text="precioValue"
                         android:textAlignment="center"
+                        android:drawableTop="@drawable/ic_coin"
                         />
 
                 </LinearLayout>
@@ -105,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:cardCornerRadius="6dp"
             app:cardElevation="6dp"
             android:focusable="true"
@@ -137,7 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:cardCornerRadius="6dp"
             app:cardElevation="6dp"
             android:focusable="true"
@@ -172,7 +143,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:cardCornerRadius="6dp"
             app:cardElevation="6dp"
             android:focusable="true"
@@ -195,12 +167,43 @@
                     />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/material_cv_btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="6dp"
+            android:focusable="true"
+            card_view:ignore="ExtraText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                >
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="delete"
+                    android:text="Cancelar"
+                    android:clickable="true"
+                    android:linksClickable="true"
+
+                    />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
         
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:cardCornerRadius="6dp"
             app:cardElevation="6dp"
             android:focusable="true"

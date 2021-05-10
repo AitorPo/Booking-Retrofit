@@ -48,12 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            app:statusBarScrim="@color/white"
-            app:contentScrim="@color/white"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
 
             <ImageView
                 android:id="@+id/ivHotel"
@@ -72,12 +69,10 @@
                 android:layout_height="?attr/actionBarSize"
                 android:textAlignment="center"
 
-                android:titleTextColor="@android:color/white"
+
                 app:layout_scrollFlags="scroll|enterAlways"
-                app:subtitleTextColor="@color/white"
                 app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:titleTextColor="@android:color/white"
-                tools:titleTextColor="@android:color/white" />
+                />
 
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

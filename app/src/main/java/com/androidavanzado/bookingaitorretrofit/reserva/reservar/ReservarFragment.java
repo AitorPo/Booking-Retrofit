@@ -1,4 +1,4 @@
-package com.androidavanzado.bookingaitorretrofit.habitacion.reservar;
+package com.androidavanzado.bookingaitorretrofit.reserva.reservar;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,19 +11,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Reserva;
+import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 
-import static android.content.Context.MODE_PRIVATE;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_HAB;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_USUARIO;
 
@@ -56,6 +53,7 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
     private Button btnReturn;
     private ProgressBar progressBar;
     private ReservarPresenter presenter;
+    private TextView tvConfirm;
 
     private Reserva r;
 
@@ -94,7 +92,20 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
         linearLayout = view.findViewById(R.id.ll_confirm);
         linearLayout.setVisibility(View.GONE);
 
+        tvConfirm = view.findViewById(R.id.tvConfirm);
+
         btnReturn = view.findViewById(R.id.btnReturn);
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_dashboard_fragment_container,
+                                ListCiudadFragment.newInstance(1))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         progressBar = view.findViewById(R.id.pb_reserva_confirm);
         progressBar.setVisibility(View.VISIBLE);
@@ -138,6 +149,8 @@ public class ReservarFragment extends Fragment implements ReservarContract.View 
     public void onSuccess(String message) {
         linearLayout.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
+        tvConfirm.setText(message);
+
     }
 
     @Override

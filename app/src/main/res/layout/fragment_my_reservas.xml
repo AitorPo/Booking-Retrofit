@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewReserva"
+
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:orientation="horizontal"
+
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp"
+    app:cardUseCompatPadding="true"
+    android:focusable="true"
+    app:cardBackgroundColor="#F9F9F9"
+    tools:ignore="ExtraText">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                >
+                <TextView
+                    android:id="@+id/tvInString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Check-In: "
+                    android:textColor="@color/black_bg"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="17sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tvInValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="@color/black_bg"
+                    android:layout_toEndOf="@id/tvInString"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tvOutString"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Check-In: "
+                    android:layout_below="@id/tvInString"
+                    android:textColor="@color/black_bg"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tvOutValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textColor="@color/black_bg"
+                    android:layout_below="@id/tvInValue"
+                    android:layout_toEndOf="@id/tvOutString"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

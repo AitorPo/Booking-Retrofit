@@ -6,7 +6,6 @@ public interface LoginContract {
     interface Model {
         interface OnLoginListener {
             void onResolve(Usuario usuario);
-
             void onReject(Throwable throwable);
         }
 

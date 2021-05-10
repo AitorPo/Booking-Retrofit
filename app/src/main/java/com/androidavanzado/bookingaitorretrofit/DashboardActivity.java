@@ -9,12 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
+import com.androidavanzado.bookingaitorretrofit.reserva.myReservas.MyReservasFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.HotelFilterFragment;
 import com.androidavanzado.bookingaitorretrofit.hotel.listHotel.findAll.view.AllHotelFragment;
 import com.androidavanzado.bookingaitorretrofit.usuario.LoginActivity;
@@ -48,7 +48,7 @@ public class DashboardActivity extends AppCompatActivity {
                 break;
             case R.id.navigation_reservas:
                 Log.d("navigation_reservas", "Reservas");
-                f = AllHotelFragment.newInstance(1);
+                f = MyReservasFragment.newInstance(Util.getUserIntPrefs(sharedPreferences));
                 break;
             case R.id.navigation_more:
                 Log.d("navigation_more", "Más");

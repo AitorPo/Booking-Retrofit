@@ -22,25 +22,22 @@ import androidx.fragment.app.Fragment;
 import com.androidavanzado.bookingaitorretrofit.BuildConfig;
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Habitacion;
-import com.androidavanzado.bookingaitorretrofit.beans.Reserva;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.contract.DetailsHabitacionContract;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.presenter.DetailsHabitacionPresenter;
-import com.androidavanzado.bookingaitorretrofit.habitacion.findByHotel.view.ListHabitacionByHotelFragment;
-import com.androidavanzado.bookingaitorretrofit.habitacion.reservar.ReservarFragment;
+import com.androidavanzado.bookingaitorretrofit.reserva.deleteReserva.DeleteReservaFragment;
+import com.androidavanzado.bookingaitorretrofit.reserva.reservar.ReservarFragment;
 import com.androidavanzado.bookingaitorretrofit.utils.Util;
 import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.androidavanzado.bookingaitorretrofit.DashboardActivity.idUsuario;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.EU_DATE_FORMAT;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_HAB;
 import static com.androidavanzado.bookingaitorretrofit.utils.Constants.ID_USUARIO;
@@ -64,8 +61,8 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
     private ConstraintLayout detailConstraint;
     private ProgressBar pbDetails;
     private LinearLayout linearLayout;
-    private Button btnRetry, tvLink, btnSave;
-    private MaterialCardView materialCardViewReserva, materialCardViewSaveReserva;
+    private Button btnRetry, tvLink, btnSave, btnDelete;
+    private MaterialCardView materialCardViewReserva, materialCardViewSaveReserva, materialCardViewDeleteReserva;
 
     private MaterialDatePicker.Builder<Pair<Long, Long>> materialDateBuilder;
     private MaterialDatePicker materialDatePicker;
@@ -127,6 +124,9 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         materialCardViewSaveReserva = view.findViewById(R.id.material_cv_btn_guardar_reserva);
         materialCardViewSaveReserva.setVisibility(View.GONE);
 
+        materialCardViewDeleteReserva = view.findViewById(R.id.material_cv_btn_delete);
+        materialCardViewDeleteReserva.setVisibility(View.GONE);
+
         materialCardViewReserva = view.findViewById(R.id.material_cv_btn_reservar);
         materialCardViewReserva.setVisibility(View.VISIBLE);
 
@@ -160,6 +160,7 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         tvLink = view.findViewById(R.id.tvLink);
         btnSave = view.findViewById(R.id.btnSave);
         tvFechas = view.findViewById(R.id.tvFechas);
+        btnDelete = view.findViewById(R.id.btnDelete);
 
         presenter.getDetailsHabitacion(idHabitacion);
 
@@ -183,6 +184,25 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
         if (habitacion.isOcupada()) {
             tvNumHabitacionsCount.setText(" No ");
             tvLink.setEnabled(false);
+            materialCardViewDeleteReserva.setVisibility(View.VISIBLE);
+            materialCardViewSaveReserva.setVisibility(View.GONE);
+            materialCardViewReserva.setVisibility(View.GONE);
+            Bundle extras = this.getArguments();
+            int idReserva = extras.getInt("idReserva");
+            Log.d(TAG, "onSuccess: " + idReserva);
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.activity_dashboard_fragment_container,
+                                    DeleteReservaFragment.newInstance(idReserva))
+
+                            .addToBackStack(null)
+                            .commit();
+                    Log.d(TAG, "onClick: " + idReserva);
+                }
+            });
         } else {
             tvNumHabitacionsCount.setText(" Sí ");
             tvLink.setEnabled(true);
@@ -201,6 +221,15 @@ public class DataHabitacionFragment extends Fragment implements DetailsHabitacio
 
             }
         });
+    }
+
+    private void deleteReserva(int idReserva){
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_dashboard_fragment_container,
+                        DeleteReservaFragment.newInstance(idReserva))
+                .addToBackStack(null)
+                .commit();
     }
 
     @SuppressLint({"LongLogTag", "SetTextI18n"})

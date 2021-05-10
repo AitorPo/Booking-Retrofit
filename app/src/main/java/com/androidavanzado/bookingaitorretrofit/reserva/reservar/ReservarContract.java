@@ -1,4 +1,4 @@
-package com.androidavanzado.bookingaitorretrofit.habitacion.reservar;
+package com.androidavanzado.bookingaitorretrofit.reserva.reservar;
 
 import com.androidavanzado.bookingaitorretrofit.beans.Reserva;
 

@@ -1,4 +1,4 @@
-package com.androidavanzado.bookingaitorretrofit.habitacion.reservar;
+package com.androidavanzado.bookingaitorretrofit.reserva.reservar;
 
 import android.util.Log;
 
@@ -42,7 +42,7 @@ public class ReservarModel implements ReservarContract.Model{
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
 
-                String r = "Reserva realizada";
+                String r = "Reserva realizada correctamente";
                 Log.d(TAG, r);
                 Log.d(TAG, String.valueOf(response.code()));
                 Log.d(TAG, String.valueOf(response.headers()));

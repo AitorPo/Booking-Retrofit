@@ -23,7 +23,9 @@ public class Constants {
     public static final String FIND_BY_PRECIO_ASC = "FIND_BY_PRECIO_ASC";
     public static final String FIND_BY_PRECIO_DESC = "FIND_BY_PRECIO_DESC";
     public static final String FIND_ALL_BY_HOTEL = "FIND_ALL_BY_HOTEL";
+    public static final String FIND_BY_USUARIO = "FIND_BY_USUARIO";
     public static final String FIND_BY_PUNTUACION = "FIND_BY_PUNTUACION";
+    public static final String DELETE_BY_ID = "DELETE_BY_ID";
     public static final String RANKING_RESERVAS = "RANKING_RESERVAS";
     public static final String ID = "ID";
     public static final String ID_HOTEL = "ID_HOTEL";

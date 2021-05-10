@@ -10,13 +10,14 @@
     <ImageView
         android:id="@+id/ivUsuario"
         android:layout_width="201dp"
-        android:layout_height="271dp"
-        android:layout_marginTop="72dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/splashscreen_booking"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutUser"
@@ -66,7 +67,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:onClick="btnClickLog"
         android:text="Iniciar sesión"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.294"

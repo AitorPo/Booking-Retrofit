@@ -118,6 +118,7 @@ public class HotelFilterFragment extends Fragment {
                             .addToBackStack(null)
                             .commit();
                     break;
+
             }
             //Log.d("FILTER", filter);
         });

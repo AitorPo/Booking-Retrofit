@@ -152,7 +152,7 @@ public class HotelDataFragment extends Fragment implements DetailsHotelContract.
 
         btnRetry = view.findViewById(R.id.btnRetry);
 
-        //tvNombre = view.findViewById(R.id.tvNombre);
+        tvNombre = view.findViewById(R.id.tvNombre);
         tvPuntuacionCount = view.findViewById(R.id.tvPuntuacionCount);
         tvDireccion = view.findViewById(R.id.tvDireccion);
         tvReservasCount = view.findViewById(R.id.tvReservasCount);
@@ -212,7 +212,7 @@ public class HotelDataFragment extends Fragment implements DetailsHotelContract.
         linearLayout.setVisibility(View.GONE);
 
         // Seteamos el valor de los elementos del layout con los datos de la API
-//        tvNombre.setText(hotel.getNombre());
+        tvNombre.setText(hotel.getNombre());
         tvPuntuacionCount.setText(String.valueOf(hotel.getPuntuacion()));
         Glide.with(this).load(BuildConfig.BOOKING_API_PHOTO_HOTEL_URL + hotel.getFoto() + IMG_FORMAT)
                 .centerInside()
@@ -225,9 +225,6 @@ public class HotelDataFragment extends Fragment implements DetailsHotelContract.
         tvDescripcion.setText(hotel.getDescripcion());
 
         idCIudad = getIdCiudad(hotel);
-
-        toolbar.setTitle(hotel.getNombre());
-        toolbar.setTitleTextColor(R.color.white);
 
         mapView.getMapAsync(this);
 

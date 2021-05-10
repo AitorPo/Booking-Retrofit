@@ -77,28 +77,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             etPasswordValue = etPassword.getText().toString();*/
             usuario.setEmail(etEmailValue);
             usuario.setPassword(etPasswordValue);
+            login(usuario);
             presenter.doLoginPresenter(usuario);
         });
     }
 
     private boolean login(Usuario usuario){
-        if (!validateEmail(usuario.getEmail())){
+        if (usuario.getEmail().isEmpty()){
             // TODO settear errores en los ET
-            return false;
-        } else if(!validatePassword(usuario.getPassword())){
+            etEmail.setError("Email inválido");
+            textInputLayoutUser.setError("Email inválido");
+        } else if(usuario.getPassword().isEmpty()){
             // TODO settear errores en los ET
-            return false;
-        } else {
-            return true;
+            etPassword.setError("Contraseña inválida");
+            textInputLayoutPassword.setError("Contraseña inválida");
         }
-    }
-
-    private boolean validateEmail(String email){
-        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(etEmailValue).matches();
-    }
-
-    private boolean validatePassword(String password){
-        return password.length() >= 3;
+        return true;
     }
 
     private void goToDashboard(Usuario usuario){

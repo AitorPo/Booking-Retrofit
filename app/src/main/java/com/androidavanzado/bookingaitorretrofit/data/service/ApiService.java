@@ -11,10 +11,12 @@ import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 public interface ApiService {
 
@@ -70,7 +72,20 @@ public interface ApiService {
     Call<ArrayList<Usuario>> login(
             @QueryMap Map<String, String> params);
 
+    @GET("BookingAitor/Controller")
+    Call<ArrayList<Reserva>> getMyReservas(
+            @QueryMap Map<String, String> params);
+
+    @GET("BookingAitor/Controller")
+    Call<Reserva> getReserva(
+            @QueryMap Map<String, String> params);
+
     @POST("BookingAitor/Controller")
     Call<Void> reservar(
-        @QueryMap Map<String, String> params);
+            @QueryMap Map<String, String> params);
+
+    @DELETE()
+    Call<Void> deleteReserva(@Url String url,
+           @QueryMap Map<String, String> params);
+
 }

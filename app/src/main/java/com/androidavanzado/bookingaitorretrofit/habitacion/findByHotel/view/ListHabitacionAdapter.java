@@ -51,6 +51,7 @@ public class ListHabitacionAdapter extends RecyclerView.Adapter<ListHabitacionAd
         holder.tvNumHabitacion.setText(String.valueOf(holder.habitacion.getNumHabitacion()));
         if (holder.habitacion.isOcupada()) {
             holder.tvDisponible.setText(" OCUPADA ");
+
         } else {
             holder.tvDisponible.setText(" DISPONIBLE ");
         }
