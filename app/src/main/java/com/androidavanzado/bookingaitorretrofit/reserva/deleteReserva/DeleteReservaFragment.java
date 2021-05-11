@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Reserva;
+import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
 import com.androidavanzado.bookingaitorretrofit.reserva.reservar.ReservarPresenter;
 
 /**
@@ -76,6 +77,17 @@ public class DeleteReservaFragment extends Fragment implements DeleteReservaCont
         tvConfirm = view.findViewById(R.id.tvConfirm);
 
         btnReturn = view.findViewById(R.id.btnReturn);
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.activity_dashboard_fragment_container,
+                                ListCiudadFragment.newInstance(1))
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         Bundle extras = this.getArguments();
         int idReserva = extras.getInt("idReserva");

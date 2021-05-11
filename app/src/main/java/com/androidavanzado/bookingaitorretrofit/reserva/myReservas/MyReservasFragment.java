@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.androidavanzado.bookingaitorretrofit.R;
 import com.androidavanzado.bookingaitorretrofit.beans.Reserva;
+import com.androidavanzado.bookingaitorretrofit.ciudad.listCiudad.view.ListCiudadFragment;
 import com.androidavanzado.bookingaitorretrofit.habitacion.detailsHabitacion.view.DataHabitacionFragment;
 import com.androidavanzado.bookingaitorretrofit.reserva.deleteReserva.DeleteReservaFragment;
 
@@ -44,7 +45,7 @@ public class MyReservasFragment extends Fragment implements MyReservasContract.V
     private MyReservasAdapter adapter;
     private ConstraintLayout constraintLayout;
     private ProgressBar pbProgress;
-    private Button btnRetry;
+    private Button btnRetry, btnReturn;
     private LinearLayout linearLayout, llNoData;
     private MyReservasPresenter presenter;
     private TextView tvDelete;
@@ -94,6 +95,7 @@ public class MyReservasFragment extends Fragment implements MyReservasContract.V
         llNoData.setVisibility(View.GONE);
 
         btnRetry = view.findViewById(R.id.btnRetry);
+
         presenter.getMyReservasList(idUsuario);
 
         recyclerViewReserva = view.findViewById(R.id.recyclerViewReservas);

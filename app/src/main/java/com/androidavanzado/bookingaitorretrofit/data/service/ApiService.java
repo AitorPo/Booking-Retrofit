@@ -84,8 +84,12 @@ public interface ApiService {
     Call<Void> reservar(
             @QueryMap Map<String, String> params);
 
-    @DELETE()
+    /*@DELETE()
     Call<Void> deleteReserva(@Url String url,
-           @QueryMap Map<String, String> params);
+           @QueryMap Map<String, String> params);*/
+    
+    @GET()
+    Call<Void> deleteReserva(@Url String url,
+                             @QueryMap Map<String, String> params);
 
 }
